@@ -6,37 +6,12 @@ AppBar requestComponentAppBar(BuildContext context) {
     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     elevation: 0,
     title: Text(
-      "Request",
+      "Available technicians",
       style: Theme.of(context).textTheme.bodyText1!.copyWith(
             color: GREY_COLOR_75,
             fontSize: 20,
           ),
     ),
-    bottom: PreferredSize(
-      preferredSize: const Size.fromHeight(15),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Wrap(
-              children: [
-                const Text("Address:"),
-                Text(
-                  "Kasoa, Nyanyano Street",
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(),
-                ),
-              ],
-            ),
-            Text(
-              "Change",
-              style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                    color: PRIMARY_COLOR,
-                  ),
-            )
-          ],
-        ),
-      ),
-    ),
+    
   );
 }

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:omp_app/Components/Utils/color_themes.dart';
 import 'package:omp_app/Views/Home/home_view.dart';
 import 'package:omp_app/Views/Profile/profile_view.dart';
-import 'package:omp_app/Views/Request/request_view.dart';
+import 'package:omp_app/Views/Technicians/available_technicians.dart';
 
 List<Widget> pages = const [
   HomeVC(),
-  RequestVC(),
   Center(child: Text("My History")),
+
+  AvailableTechniciansVC(),
   // Center(child: Text("Wallet")),
   ProfileVC()
 ];
@@ -18,14 +20,14 @@ final List<Map<String, dynamic>> imgList = [
     "description":
         'Dirt and dust, sand and grit, droppings from birds etc, should be removed from panel tops',
     "imageUrl":
-        'https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZW52aXJvbm1lbnRhbCUyMHByb3RlY3Rpb258ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60'
+        'https://images.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg?auto=compress&cs=tinysrgb&w=800'
   },
   {
     "title": "Trim Back Trees.",
     "description":
         'The more sun on your panels, the more electricity they generate..',
     "imageUrl":
-        'https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZW52aXJvbm1lbnRhbCUyMHByb3RlY3Rpb258ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
+        'https://images.pexels.com/photos/10268580/pexels-photo-10268580.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     "title": "Spray Dusty Panels.",
@@ -78,3 +80,51 @@ List wasteCategories = [
     "marketPrice": "1.00 Ghps",
   },
 ];
+
+final List<Widget> imageSliders = imgList
+    .map((item) => ClipRRect(
+        borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+        child: Stack(
+          children: <Widget>[
+            Image.network(item["imageUrl"], fit: BoxFit.cover, width: 1000.0),
+            Positioned(
+              bottom: 0.0,
+              left: 0.0,
+              right: 0.0,
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(200, 0, 0, 0),
+                      Color.fromARGB(0, 0, 0, 0)
+                    ],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item["title"],
+                      style: const TextStyle(
+                        color: Colors.white,
+                        // fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(item["description"],
+                        style: const TextStyle(color: Colors.white)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        )))
+    .toList();
+
+ var outlineInputBorder = OutlineInputBorder(
+        borderRadius: BorderRadius.circular(3),
+        borderSide: BorderSide(color: GREY_COLOR_50));

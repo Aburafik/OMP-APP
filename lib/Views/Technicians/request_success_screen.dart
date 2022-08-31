@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
 import 'package:omp_app/Components/custom_button.dart';
 
-
 class RequestSuccessMessageVC extends StatelessWidget {
   const RequestSuccessMessageVC({Key? key}) : super(key: key);
 
@@ -33,8 +32,13 @@ class RequestSuccessMessageVC extends StatelessWidget {
                         .bodyText1!
                         .copyWith(fontSize: 20, fontWeight: FontWeight.bold)),
               ),
+
+              // Material(
+              //   shape: RoundedRectangleBorder(side: BorderSide()),
+
+              // ),
               Text(
-                "Request number 233, we will let you know\n when the request is approved.",
+                "Our technicians will contact you shortly",
                 style: Theme.of(context)
                     .textTheme
                     .headline2!

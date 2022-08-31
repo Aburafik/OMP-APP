@@ -1,10 +1,12 @@
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
 import 'package:omp_app/Components/Utils/constants.dart';
+import 'package:omp_app/Components/category_selection.dart';
 import 'package:omp_app/Components/home_app_bar.dart';
 import 'package:omp_app/Components/price_market_component.dart';
 import 'package:omp_app/Components/protect_environment.dart';
-
+import 'package:omp_app/Components/select_item.dart';
 
 class HomeVC extends StatelessWidget {
   const HomeVC({Key? key}) : super(key: key);
@@ -34,8 +36,14 @@ class HomeVC extends StatelessWidget {
                                 child:
                                     const EnvironmentProtectionTipsCarouselComponent(),
                               ),
-                              const PricesMarketComponent(),
-                              TopUsersDisplayComponent()
+
+                              SelectItemTitleComponent(
+                                textTitle: "Choose a Model",
+                                hasIcon: false,
+                              ),
+                              const RequestCategorySelectionComponent(),
+
+                              // const PricesMarketComponent(),
                             ],
                           ),
                         ),
@@ -50,50 +58,6 @@ class HomeVC extends StatelessWidget {
   }
 }
 
-final List<Widget> imageSliders = imgList
-    .map((item) => ClipRRect(
-        borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-        child: Stack(
-          children: <Widget>[
-            Image.network(item["imageUrl"], fit: BoxFit.cover, width: 1000.0),
-            Positioned(
-              bottom: 0.0,
-              left: 0.0,
-              right: 0.0,
-              child: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color.fromARGB(200, 0, 0, 0),
-                      Color.fromARGB(0, 0, 0, 0)
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                  ),
-                ),
-                padding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      item["title"],
-                      style: const TextStyle(
-                        color: Colors.white,
-                        // fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(item["description"],
-                        style: const TextStyle(color: Colors.white)),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        )))
-    .toList();
-
 class TopUsersDisplayComponent extends StatelessWidget {
   const TopUsersDisplayComponent({Key? key}) : super(key: key);
 
@@ -101,34 +65,11 @@ class TopUsersDisplayComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Top users",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(fontSize: 18),
-              ),
-              Text(
-                "See all",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText2!
-                    .copyWith(color: PRIMARY_COLOR),
-              ),
-            ],
-          ),
-        ),
-
         ListView.builder(
           shrinkWrap: true,
           itemCount: 10,
           physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) =>const TopUsersCardComponent(),
+          itemBuilder: (context, index) => const TopUsersCardComponent(),
         )
       ],
     );
@@ -170,29 +111,33 @@ class TopUsersCardComponent extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Adams Stephene",
-                        style: Theme.of(context).textTheme.bodyText1),
-                   const Text("Last active")
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Adams Stephene",
+                            style: Theme.of(context).textTheme.bodyText1),
+                       const SizedBox(height: 10),
+                        Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: const [
+                            Icon(Icons.location_on, color: Colors.yellow),
+                            Text("45454")
+                          ],
+                        )
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const Text("Last active"),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(FeatherIcons.phoneCall,
+                                color: PRIMARY_COLOR))
+                      ],
+                    )
                   ],
                 ),
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: const [
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.grey,
-                    ),
-                    Text("45454")
-                  ],
-                )
               ],
             ),
           )

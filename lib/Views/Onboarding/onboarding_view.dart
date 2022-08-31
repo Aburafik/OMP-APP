@@ -116,7 +116,7 @@ class OnboardingView extends StatelessWidget {
                   height: 480,
                 ),
                 Text(
-                  'Easy to Communicate.',
+                  'System Survey.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: kDarkBlueColor,
@@ -128,7 +128,7 @@ class OnboardingView extends StatelessWidget {
                   height: 20,
                 ),
                 const Text(
-                  'You can easily make a request for your waste and we will get right to your door on time',
+                  'To serve you better, models surveys are available to complete in order to get the right service',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black26,
@@ -149,7 +149,7 @@ class OnboardingView extends StatelessWidget {
                   height: 460,
                 ),
                 Text(
-                  'Scan QR Code!',
+                  'Get Available Technicians',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: kDarkBlueColor,
@@ -161,7 +161,7 @@ class OnboardingView extends StatelessWidget {
                   height: 20,
                 ),
                 const Text(
-                  'A representative will recieve your order & confirm the available quantity, then he will scan your QR code to get rewarded points loaded in your wallet .',
+                  'Get available technicians to respond to your solar panel system with just a click or request.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black26,

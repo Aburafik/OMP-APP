@@ -28,17 +28,18 @@ class NavBarMenuComponent extends StatelessWidget {
           ),
         ),
         BottomNavigationBarItem(
-          label: "Requests",
-          icon: Icon(
-            FeatherIcons.plusSquare,
-          ),
-        ),
-        BottomNavigationBarItem(
           label: "My History",
           icon: Icon(
             FeatherIcons.printer,
           ),
         ),
+        BottomNavigationBarItem(
+          label: "Technicians",
+          icon: Icon(
+            FeatherIcons.plusSquare,
+          ),
+        ),
+
         // BottomNavigationBarItem(
         //   label: "Wallet",
         //   icon: Icon(

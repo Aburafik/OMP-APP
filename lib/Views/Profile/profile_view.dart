@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
-import 'package:omp_app/Components/my_accounts_components.dart';
-import 'package:omp_app/Components/support_component.dart';
+import 'package:omp_app/Components/custom_button.dart';
 import 'package:omp_app/Components/user_profile_component.dart';
-
 
 class ProfileVC extends StatelessWidget {
   const ProfileVC({Key? key}) : super(key: key);
@@ -33,15 +31,20 @@ class ProfileVC extends StatelessWidget {
               style:
                   Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 18),
             ),
-            const MyAccountComponent(),
-            const SupportComponent(),
+            // const MyAccountComponent(),
+
+            CustomButtonComponent(
+              buttonText: "Update Profile",
+              onPressed: () => Navigator.pop(context),
+            ),
+            // const SupportComponent(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.logout),
-                  SizedBox(width: 10),
+                  const Icon(Icons.logout),
+                  const SizedBox(width: 10),
                   Text("SignOut",
                       style: Theme.of(context)
                           .textTheme

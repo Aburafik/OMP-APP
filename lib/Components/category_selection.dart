@@ -33,6 +33,7 @@ class _RequestCategorySelectionComponentState
           setState(() {
             selectedCard = index;
           });
+          selectedModelRoute(index, context);
         },
         child: Container(
           height: 50,
@@ -45,6 +46,7 @@ class _RequestCategorySelectionComponentState
             children: [
               Icon(wasteType[index]['image'], color: PRIMARY_COLOR),
               Text(wasteType[index]['name'],
+                  textAlign: TextAlign.center,
                   style: const TextStyle(color: PRIMARY_COLOR)),
             ],
           ),
@@ -56,35 +58,56 @@ class _RequestCategorySelectionComponentState
 
 List<Map<String, dynamic>> wasteType = [
   {
-    "name": "Plastic",
+    "name": "General Maintenance",
     "image": FontAwesomeIcons.glassWaterDroplet,
   },
   {
-    "name": "Paper",
+    "name": "PV Models",
     "image": FontAwesomeIcons.paperPlane,
   },
   {
-    "name": "Glass",
+    "name": "PV Array",
     "image": FontAwesomeIcons.whiskeyGlass,
   },
   {
-    "name": "Metal",
+    "name": "Inverters",
     "image": FontAwesomeIcons.weightHanging,
   },
   {
-    "name": "Cardboard",
+    "name": "System Monitoring",
     "image": FontAwesomeIcons.box,
   },
   {
-    "name": "Electronics",
+    "name": "Instrumental",
     "image": FeatherIcons.radio,
   },
   {
-    "name": "Cans",
-    "image": FeatherIcons.box,
+    "name": "Battery System (Off-Grid)",
+    "image": FeatherIcons.battery,
   },
   {
     "name": "Other",
     "image": FontAwesomeIcons.question,
   },
 ];
+
+selectedModelRoute(index, BuildContext context) {
+  switch (index) {
+    case 0:
+      return Navigator.pushNamed(context, "/general-maintenance-page");
+    case 1:
+      return Navigator.pushNamed(context, "/pv-models-page");
+
+    case 2:
+      return Navigator.pushNamed(context, "/pv-array-page");
+    case 3:
+      return Navigator.pushNamed(context, "/inverters-page");
+    case 4:
+      return Navigator.pushNamed(context, "/system-monitoring-page");
+    case 5:
+      return Navigator.pushNamed(context, "/instrumentals-page");
+    case 6:
+      return Navigator.pushNamed(context, "/battery-system-page");
+    default:
+  }
+}
