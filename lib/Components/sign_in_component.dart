@@ -43,8 +43,8 @@ class _SignInFormComponentState extends State<SignInFormComponent> {
         Align(
             alignment: Alignment.centerRight,
             child: GestureDetector(
-              onTap: () => Navigator.pushNamedAndRemoveUntil(
-                  context, "/reset-password-view", (route) => false),
+              onTap: () => Navigator.pushNamed(
+                  context, "/reset-password-view"),
               child: Text(
                 "Forgot password?",
                 style: Theme.of(context)

@@ -32,17 +32,18 @@ class _SplashScreenState extends State<SplashScreen> {
             CircleAvatar(
               backgroundColor: PRIMARY_COLOR,
               radius: 50,
+              child: Text("OMP",
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: WHITE_COLOR)),
             ),
-            // Image.asset(
-            //   "assets/images/logo.png",
-            //   height: 50,
-            //   width: 50,
-            // ),
-            Text("OMP",
+            SizedBox(height: 20),
+            Text("Operation Maintenance Protocol",
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: PRIMARY_COLOR))
+                      fontStyle: FontStyle.italic,
+                      color: PRIMARY_COLOR,
+                    ))
           ],
         ),
       ),

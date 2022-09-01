@@ -13,6 +13,8 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
   String questionOneAnswer = "";
   String questionTwoAnswer = "";
   String questionThreeAnswer = "";
+  String questionFourAnswer = "";
+  String questionFiveAnswer = "";
   String questionSixAnswer = "";
   String questionSevenAnswer = "";
   String questionEightAnswer = "";
@@ -23,7 +25,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("General Maintenance"),
+        title: const Text("PV Models"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -36,21 +38,21 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
               children: [
                 AnswerOptionsComponent(
                   questionOneAnswer: questionOneAnswer,
-                  title: "Yes",
-                  value: "Yes",
+                  title: "Yearly",
+                  value: "Yearly",
                   onChanged: (String? value) {
                     setState(() => questionOneAnswer = value!);
                   },
                 ),
                 AnswerOptionsComponent(
                   questionOneAnswer: questionOneAnswer,
-                  title: "No",
-                  value: "No",
+                  title: "N/A",
+                  value: "N/A",
                   onChanged: (String? value) {
                     setState(() => questionOneAnswer = value!);
                   },
                 ),
-                Spacer()
+                // Spacer()
               ],
             ),
             Question(
@@ -60,21 +62,29 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
               children: [
                 AnswerOptionsComponent(
                   questionOneAnswer: questionTwoAnswer,
-                  title: "Yes",
-                  value: "Yes",
+                  title: "Yearly",
+                  value: "Yearly",
                   onChanged: (String? value) {
                     setState(() => questionTwoAnswer = value!);
                   },
                 ),
                 AnswerOptionsComponent(
                   questionOneAnswer: questionTwoAnswer,
-                  title: "No",
-                  value: "No",
+                  title: "Quarterly",
+                  value: "Quartely",
                   onChanged: (String? value) {
                     setState(() => questionTwoAnswer = value!);
                   },
                 ),
-                Spacer()
+                AnswerOptionsComponent(
+                  questionOneAnswer: questionTwoAnswer,
+                  title: "N/A",
+                  value: "N/A",
+                  onChanged: (String? value) {
+                    setState(() => questionTwoAnswer = value!);
+                  },
+                ),
+                // Spacer()
               ],
             ),
             Question(
@@ -84,51 +94,100 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
               children: [
                 AnswerOptionsComponent(
                   questionOneAnswer: questionThreeAnswer,
-                  title: "Yes",
-                  value: "Yes",
+                  title: "Yearly",
+                  value: "Yearly",
                   onChanged: (String? value) {
                     setState(() => questionThreeAnswer = value!);
                   },
                 ),
                 AnswerOptionsComponent(
                   questionOneAnswer: questionThreeAnswer,
-                  title: "No",
-                  value: "No",
+                  title: "Bi annual",
+                  value: "Bi annual",
                   onChanged: (String? value) {
                     setState(() => questionThreeAnswer = value!);
                   },
                 ),
-                Spacer()
+                AnswerOptionsComponent(
+                  questionOneAnswer: questionThreeAnswer,
+                  title: "N/a",
+                  value: "N/a",
+                  onChanged: (String? value) {
+                    setState(() => questionThreeAnswer = value!);
+                  },
+                ),
+                // Spacer()
               ],
             ),
             Question(
               question: questionFour,
             ),
-            QuestionsTextFormField(),
+            Row(
+              children: [
+                AnswerOptionsComponent(
+                  questionOneAnswer: questionFourAnswer,
+                  title: "Yearly",
+                  value: "Yearly",
+                  onChanged: (String? value) {
+                    setState(() => questionFourAnswer = value!);
+                  },
+                ),
+                AnswerOptionsComponent(
+                  questionOneAnswer: questionFourAnswer,
+                  title: "N/A",
+                  value: "N/A",
+                  onChanged: (String? value) {
+                    setState(() => questionFourAnswer = value!);
+                  },
+                ),
+              ],
+            ),
+            // QuestionsTextFormField(),
             Question(
               question: questionFive,
             ),
-            QuestionsTextFormField(),
+
+            Row(
+              children: [
+                AnswerOptionsComponent(
+                  questionOneAnswer: questionFiveAnswer,
+                  title: "Yearly",
+                  value: "Yearly",
+                  onChanged: (String? value) {
+                    setState(() => questionFiveAnswer = value!);
+                  },
+                ),
+                AnswerOptionsComponent(
+                  questionOneAnswer: questionFiveAnswer,
+                  title: "N/A",
+                  value: "N/A",
+                  onChanged: (String? value) {
+                    setState(() => questionFiveAnswer = value!);
+                  },
+                ),
+              ],
+            ),
+
+            // QuestionsTextFormField(),
             Question(question: questionSix),
             Row(
               children: [
                 AnswerOptionsComponent(
                   questionOneAnswer: questionSixAnswer,
-                  title: "Yes",
-                  value: "Yes",
+                  title: "Every 5 Years",
+                  value: "Every 5 years",
                   onChanged: (String? value) {
                     setState(() => questionSixAnswer = value!);
                   },
                 ),
                 AnswerOptionsComponent(
                   questionOneAnswer: questionSixAnswer,
-                  title: "No",
-                  value: "No",
+                  title: "N/A",
+                  value: "N/A",
                   onChanged: (String? value) {
                     setState(() => questionSixAnswer = value!);
                   },
                 ),
-                Spacer()
               ],
             ),
             Question(question: questionSeven),
@@ -136,21 +195,20 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
               children: [
                 AnswerOptionsComponent(
                   questionOneAnswer: questionSevenAnswer,
-                  title: "Yes",
-                  value: "Yes",
+                  title: "Yearly",
+                  value: "Yearly",
                   onChanged: (String? value) {
                     setState(() => questionSevenAnswer = value!);
                   },
                 ),
                 AnswerOptionsComponent(
                   questionOneAnswer: questionSevenAnswer,
-                  title: "No",
-                  value: "No",
+                  title: "N/A",
+                  value: "N/A",
                   onChanged: (String? value) {
                     setState(() => questionSevenAnswer = value!);
                   },
                 ),
-                Spacer()
               ],
             ),
             Question(question: questionEight),
@@ -158,73 +216,32 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
               children: [
                 AnswerOptionsComponent(
                   questionOneAnswer: questionEightAnswer,
-                  title: "Yes",
-                  value: "Yes",
+                  title: "Every 5 years ",
+                  value: "Every 5 years ",
                   onChanged: (String? value) {
                     setState(() => questionEightAnswer = value!);
                   },
                 ),
                 AnswerOptionsComponent(
                   questionOneAnswer: questionEightAnswer,
-                  title: "No",
-                  value: "No",
+                  title: "Yearly",
+                  value: "Yearly",
                   onChanged: (String? value) {
                     setState(() => questionEightAnswer = value!);
                   },
                 ),
-                Spacer()
+
+                AnswerOptionsComponent(
+                  questionOneAnswer: questionEightAnswer,
+                  title: "N/A",
+                  value: "N/A",
+                  onChanged: (String? value) {
+                    setState(() => questionEightAnswer = value!);
+                  },
+                ),
+                // Spacer()
               ],
             ),
-            Question(
-              question: questionNine,
-            ),
-            QuestionsTextFormField(),
-            Question(question: questionTen),
-            Row(
-              children: [
-                AnswerOptionsComponent(
-                  questionOneAnswer: questionTenAnswer,
-                  title: "Yes",
-                  value: "Yes",
-                  onChanged: (String? value) {
-                    setState(() => questionTenAnswer = value!);
-                  },
-                ),
-                AnswerOptionsComponent(
-                  questionOneAnswer: questionTenAnswer,
-                  title: "No",
-                  value: "No",
-                  onChanged: (String? value) {
-                    setState(() => questionTenAnswer = value!);
-                  },
-                ),
-                Spacer()
-              ],
-            ),
-            Question(question: questionEleven),
-            Row(
-              children: [
-                AnswerOptionsComponent(
-                  questionOneAnswer: questionElevenAnswer,
-                  title: "Yes",
-                  value: "Yes",
-                  onChanged: (String? value) {
-                    setState(() => questionElevenAnswer = value!);
-                  },
-                ),
-                AnswerOptionsComponent(
-                  questionOneAnswer: questionElevenAnswer,
-                  title: "No",
-                  value: "No",
-                  onChanged: (String? value) {
-                    setState(() => questionElevenAnswer = value!);
-                  },
-                ),
-                Spacer()
-              ],
-            ),
-            Question(question: questionTwelve),
-            QuestionsTextFormField(),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
               child: CustomButtonComponent(
@@ -257,10 +274,3 @@ String questionSix = "6. Does your company have PV systems with storage?";
 String questionSeven =
     "7. Are they housed and kept within optimal operating temperature?";
 String questionEight = "8. Do you label your solar PV systems?";
-
-String questionNine = "9. How often are the labels replaced?";
-String questionTen =
-    "10. Do you have a shutdown procedure clearly displayed at your sites?";
-String questionEleven =
-    "11. Do you have an online monitoring system for all your PV systems?";
-String questionTwelve = "12. What is your total installed capacity?";

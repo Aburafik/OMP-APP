@@ -310,11 +310,11 @@ class QuestionsTextFormField extends StatelessWidget {
 String questionOne =
     "1. Do you have a single major contractor on site who routinely provides maintenance support services? ";
 String questionTwo =
-    "1.Do you have an operations/maintenance organization chart? ";
+    "2. Do you have an operations/maintenance organization chart? ";
 
 String questionThree =
     "3. Are there standard operating procedures for each step of the maintenance process, and are they consistently followed?";
-String questionFour = "4.Who can do maintenance?";
+String questionFour = "4. Who can do maintenance?";
 
 String questionFive = "5. How often does your company do maintenance?";
 

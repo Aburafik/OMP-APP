@@ -43,7 +43,7 @@ class OnboardingView extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             child: Center(
               child: Image.asset(
-                'assets/images/logo2.png',
+                'images/tips.png',
                 // height: 200,
                 // width: 200,
               ),
@@ -53,18 +53,15 @@ class OnboardingView extends StatelessWidget {
             height: 400,
             width: MediaQuery.of(context).size.width,
             child: Center(
-              child: Image.asset(
-                'assets/images/logo3.png',
-               
-              ),
+              child: Image.asset("images/survey.png"),
             ),
           ),
           SizedBox(
-            height: 400,
+            height: 500,
             width: MediaQuery.of(context).size.width,
             child: Center(
               child: Image.asset(
-                'assets/images/logo.png',
+                'images/technician.png',
                 height: 200,
                 width: 200,
               ),
@@ -83,7 +80,7 @@ class OnboardingView extends StatelessWidget {
                   height: 480,
                 ),
                 Text(
-                  'Get Reward Points',
+                  'Solar Maintenance',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: kDarkBlueColor,
@@ -95,7 +92,7 @@ class OnboardingView extends StatelessWidget {
                   height: 20,
                 ),
                 const Text(
-                  'Collect and saperate your waste and get reward points while saving your planet',
+                  'Best practices on how to maintian your solar plant',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black26,
@@ -112,7 +109,7 @@ class OnboardingView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                const SizedBox(
+                SizedBox(
                   height: 480,
                 ),
                 Text(
