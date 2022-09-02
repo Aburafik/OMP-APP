@@ -2,27 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:omp_app/Components/answer_options_component.dart';
 import 'package:omp_app/Components/custom_button.dart';
 import 'package:omp_app/Components/question_text_component.dart';
+import 'package:omp_app/Views/QuestionairsModels/general_maintenance.dart';
 
-class InvertersVC extends StatefulWidget {
-  const InvertersVC({Key? key}) : super(key: key);
+class DcAndAcVC extends StatefulWidget {
+  const DcAndAcVC({Key? key}) : super(key: key);
 
   @override
-  State<InvertersVC> createState() => _InvertersVCState();
+  State<DcAndAcVC> createState() => _DcAndAcVCState();
 }
 
-class _InvertersVCState extends State<InvertersVC> {
+class _DcAndAcVCState extends State<DcAndAcVC> {
   String questionOneAnswer = "";
   String questionTwoAnswer = "";
   String questionThreeAnswer = "";
   String questionFourAnswer = "";
   String questionFiveAnswer = "";
   String questionSixAnswer = "";
+  String questionSevenAnswer = "";
+  String questionEightAnswer = "";
+  String questionNineAnswer = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Inverters"),
+        title: const Text("DC & AC Slide of System "),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -43,21 +47,12 @@ class _InvertersVCState extends State<InvertersVC> {
                 ),
                 AnswerOptionsComponent(
                   questionAnswer: questionOneAnswer,
-                  title: "Bi annual",
-                  value: "Bi annual",
-                  onChanged: (String? value) {
-                    setState(() => questionOneAnswer = value!);
-                  },
-                ),
-                AnswerOptionsComponent(
-                  questionAnswer: questionOneAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
                     setState(() => questionOneAnswer = value!);
                   },
                 ),
-                // Spacer()
               ],
             ),
             Question(
@@ -75,21 +70,12 @@ class _InvertersVCState extends State<InvertersVC> {
                 ),
                 AnswerOptionsComponent(
                   questionAnswer: questionTwoAnswer,
-                  title: "Bi annual",
-                  value: "Bi annual",
-                  onChanged: (String? value) {
-                    setState(() => questionTwoAnswer = value!);
-                  },
-                ),
-                AnswerOptionsComponent(
-                  questionAnswer: questionTwoAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
                     setState(() => questionTwoAnswer = value!);
                   },
                 ),
-                // Spacer()
               ],
             ),
             Question(
@@ -107,21 +93,12 @@ class _InvertersVCState extends State<InvertersVC> {
                 ),
                 AnswerOptionsComponent(
                   questionAnswer: questionThreeAnswer,
-                  title: "Bi annual",
-                  value: "Bi annual",
+                  title: "N/A",
+                  value: "N/A",
                   onChanged: (String? value) {
                     setState(() => questionThreeAnswer = value!);
                   },
                 ),
-                AnswerOptionsComponent(
-                  questionAnswer: questionThreeAnswer,
-                  title: "N/a",
-                  value: "N/a",
-                  onChanged: (String? value) {
-                    setState(() => questionThreeAnswer = value!);
-                  },
-                ),
-                // Spacer()
               ],
             ),
             Question(
@@ -131,16 +108,16 @@ class _InvertersVCState extends State<InvertersVC> {
               children: [
                 AnswerOptionsComponent(
                   questionAnswer: questionFourAnswer,
-                  title: "Yearly",
-                  value: "Yearly",
+                  title: "every 5yrs",
+                  value: "every 5yrs",
                   onChanged: (String? value) {
                     setState(() => questionFourAnswer = value!);
                   },
                 ),
                 AnswerOptionsComponent(
                   questionAnswer: questionFourAnswer,
-                  title: "Bi annual",
-                  value: "Bi annual",
+                  title: "Yearly",
+                  value: "Yearly",
                   onChanged: (String? value) {
                     setState(() => questionFourAnswer = value!);
                   },
@@ -172,14 +149,6 @@ class _InvertersVCState extends State<InvertersVC> {
                 ),
                 AnswerOptionsComponent(
                   questionAnswer: questionFiveAnswer,
-                  title: "Bi annual",
-                  value: "Bi annual",
-                  onChanged: (String? value) {
-                    setState(() => questionFiveAnswer = value!);
-                  },
-                ),
-                AnswerOptionsComponent(
-                  questionAnswer: questionFiveAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
@@ -196,16 +165,16 @@ class _InvertersVCState extends State<InvertersVC> {
               children: [
                 AnswerOptionsComponent(
                   questionAnswer: questionSixAnswer,
-                  title: "Yearly",
-                  value: "Yearly",
+                  title: "Every 5yrs ",
+                  value: "Every 5yrs ",
                   onChanged: (String? value) {
                     setState(() => questionSixAnswer = value!);
                   },
                 ),
                 AnswerOptionsComponent(
                   questionAnswer: questionSixAnswer,
-                  title: "Bi annual",
-                  value: "Bi annual",
+                  title: "Yearly",
+                  value: "Yearly",
                   onChanged: (String? value) {
                     setState(() => questionSixAnswer = value!);
                   },
@@ -221,8 +190,52 @@ class _InvertersVCState extends State<InvertersVC> {
               ],
             ),
 
-            // QuestionsTextFormField(),
-
+            Question(
+              question: questionSeven,
+            ),
+            Row(
+              children: [
+                AnswerOptionsComponent(
+                  questionAnswer: questionSevenAnswer,
+                  title: "Yearly",
+                  value: "Yearly",
+                  onChanged: (String? value) {
+                    setState(() => questionSevenAnswer = value!);
+                  },
+                ),
+                AnswerOptionsComponent(
+                  questionAnswer: questionSevenAnswer,
+                  title: "N/A",
+                  value: "N/A",
+                  onChanged: (String? value) {
+                    setState(() => questionSevenAnswer = value!);
+                  },
+                ),
+              ],
+            ),
+            Question(
+              question: questionEight,
+            ),
+            Row(
+              children: [
+                AnswerOptionsComponent(
+                  questionAnswer: questionEightAnswer,
+                  title: "Yearly",
+                  value: "Yearly",
+                  onChanged: (String? value) {
+                    setState(() => questionEightAnswer = value!);
+                  },
+                ),
+                AnswerOptionsComponent(
+                  questionAnswer: questionEightAnswer,
+                  title: "N/A",
+                  value: "N/A",
+                  onChanged: (String? value) {
+                    setState(() => questionEightAnswer = value!);
+                  },
+                ),
+              ],
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
               child: CustomButtonComponent(
@@ -238,17 +251,23 @@ class _InvertersVCState extends State<InvertersVC> {
 }
 
 String questionOne =
-    "1.How frequently do you look for warning labels, signs, and potential replacements?";
+    "1. How frequently do you look for labels and warning signs that might need to be replaced?";
 String questionTwo =
-    "2 .How frequently do you inspect the ventilation system and dust the inverter cabinet?";
+    "2. How frequently do you inspect cables for earth faults, short or open circuits, arcing, pulling out of connectors, flaws, and cracks?";
 
 String questionThree =
-    "3. How frequently do you inspect cables for loose connections?";
+    "3. How frequently do you verify that circuit breakers, disconnect switches, and fuses are in good working order?";
 String questionFour =
-    "4. How frequently do you look for unusual operating temperatures?";
+    "4. How frequently do you inspect the condition of surge arresters and replace them as the manufacturer directs?";
 
 String questionFive =
-    "5. How frequently do you test features like automatic disconnection upon grid power supply?";
+    "5. How frequently do you inspect for insects, water incursion, or corrosion?";
 
 String questionSix =
-    " How frequently are the input and output power measured to check that the inverters are operating properly?";
+    "6. How frequently do you test DC circuits for insulation, polarity, and the operation of safety features, or as required by the CoP?";
+
+String questionSeven =
+    "7. How frequently do you inspect for insects, water ingress, or corrosion?";
+
+String questionEight =
+    "8. How frequently do you perform AC circuit testing, such as insulation tests, polarity tests, protection device function tests, and residual current device/residual circuit breaker with overcurrent protection (RCD/RCBO) tripping times, or as otherwise required by the Conditions of Performance?";

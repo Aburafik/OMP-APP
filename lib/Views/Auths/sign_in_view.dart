@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omp_app/Components/Utils/constants.dart';
 import 'package:omp_app/Components/auth_options.dart';
 import 'package:omp_app/Components/screen_description_text.dart';
 import 'package:omp_app/Components/sign_in_component.dart';
@@ -15,11 +16,8 @@ class SignInVC extends StatelessWidget {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Image.asset(
-                "assets/images/loginlogo.png",
-                height: 120,
-              ),
+              padding: const EdgeInsets.all(50.0),
+              child:appLogo(context)
             ),
             ScreenDescriptionTextComponent(
               title: "Welcome",

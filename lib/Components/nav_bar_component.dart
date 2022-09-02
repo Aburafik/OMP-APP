@@ -39,13 +39,6 @@ class NavBarMenuComponent extends StatelessWidget {
             FeatherIcons.plusSquare,
           ),
         ),
-
-        // BottomNavigationBarItem(
-        //   label: "Wallet",
-        //   icon: Icon(
-        //     FeatherIcons.creditCard,
-        //   ),
-        // ),
         BottomNavigationBarItem(
           label: "Profile",
           icon: Icon(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:omp_app/Components/answer_options_component.dart';
 import 'package:omp_app/Components/custom_button.dart';
-import 'package:omp_app/Views/QuestionairsModels/general_maintenance.dart';
+import 'package:omp_app/Components/question_text_component.dart';
 
 class PvArraysVC extends StatefulWidget {
   const PvArraysVC({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _PvArraysVCState extends State<PvArraysVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionOneAnswer,
+                  questionAnswer: questionOneAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
@@ -40,7 +41,7 @@ class _PvArraysVCState extends State<PvArraysVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionOneAnswer,
+                  questionAnswer: questionOneAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
@@ -56,16 +57,16 @@ class _PvArraysVCState extends State<PvArraysVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionTwoAnswer,
+                  questionAnswer: questionTwoAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
                     setState(() => questionTwoAnswer = value!);
                   },
                 ),
-               
+
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionTwoAnswer,
+                  questionAnswer: questionTwoAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
@@ -81,7 +82,7 @@ class _PvArraysVCState extends State<PvArraysVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionThreeAnswer,
+                  questionAnswer: questionThreeAnswer,
                   title: "Every 5yrs",
                   value: "Every 5yrs",
                   onChanged: (String? value) {
@@ -89,7 +90,7 @@ class _PvArraysVCState extends State<PvArraysVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionThreeAnswer,
+                  questionAnswer: questionThreeAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
@@ -97,7 +98,7 @@ class _PvArraysVCState extends State<PvArraysVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionThreeAnswer,
+                  questionAnswer: questionThreeAnswer,
                   title: "N/a",
                   value: "N/a",
                   onChanged: (String? value) {
@@ -113,7 +114,7 @@ class _PvArraysVCState extends State<PvArraysVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionFourAnswer,
+                  questionAnswer: questionFourAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
@@ -121,7 +122,7 @@ class _PvArraysVCState extends State<PvArraysVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionFourAnswer,
+                  questionAnswer: questionFourAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
@@ -138,7 +139,7 @@ class _PvArraysVCState extends State<PvArraysVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionFiveAnswer,
+                  questionAnswer: questionFiveAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
@@ -146,7 +147,7 @@ class _PvArraysVCState extends State<PvArraysVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionFiveAnswer,
+                  questionAnswer: questionFiveAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {

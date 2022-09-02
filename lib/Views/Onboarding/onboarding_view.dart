@@ -39,7 +39,7 @@ class OnboardingView extends StatelessWidget {
         pageBackgroundColor: Colors.white,
         background: [
           SizedBox(
-            height: 400,
+            height: 300,
             width: MediaQuery.of(context).size.width,
             child: Center(
               child: Image.asset(
@@ -50,7 +50,7 @@ class OnboardingView extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 400,
+            height: 300,
             width: MediaQuery.of(context).size.width,
             child: Center(
               child: Image.asset("images/survey.png"),

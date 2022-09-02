@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
+import 'package:omp_app/Components/Utils/constants.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -29,15 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(
-              backgroundColor: PRIMARY_COLOR,
-              radius: 50,
-              child: Text("OMP",
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: WHITE_COLOR)),
-            ),
+            appLogo(context),
             SizedBox(height: 20),
             Text("Operation Maintenance Protocol",
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
@@ -49,4 +42,6 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
+
+
 }

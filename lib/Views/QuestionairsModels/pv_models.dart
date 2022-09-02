@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:omp_app/Components/answer_options_component.dart';
 import 'package:omp_app/Components/custom_button.dart';
-import 'package:omp_app/Views/QuestionairsModels/general_maintenance.dart';
+import 'package:omp_app/Components/question_text_component.dart';
 
 class PvModelsVC extends StatefulWidget {
   const PvModelsVC({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionOneAnswer,
+                  questionAnswer: questionOneAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
@@ -45,7 +46,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionOneAnswer,
+                  questionAnswer: questionOneAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
@@ -61,7 +62,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionTwoAnswer,
+                  questionAnswer: questionTwoAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
@@ -69,7 +70,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionTwoAnswer,
+                  questionAnswer: questionTwoAnswer,
                   title: "Quarterly",
                   value: "Quartely",
                   onChanged: (String? value) {
@@ -77,7 +78,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionTwoAnswer,
+                  questionAnswer: questionTwoAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
@@ -93,7 +94,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionThreeAnswer,
+                  questionAnswer: questionThreeAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
@@ -101,7 +102,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionThreeAnswer,
+                  questionAnswer: questionThreeAnswer,
                   title: "Bi annual",
                   value: "Bi annual",
                   onChanged: (String? value) {
@@ -109,7 +110,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionThreeAnswer,
+                  questionAnswer: questionThreeAnswer,
                   title: "N/a",
                   value: "N/a",
                   onChanged: (String? value) {
@@ -125,7 +126,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionFourAnswer,
+                  questionAnswer: questionFourAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
@@ -133,7 +134,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionFourAnswer,
+                  questionAnswer: questionFourAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
@@ -150,7 +151,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionFiveAnswer,
+                  questionAnswer: questionFiveAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
@@ -158,7 +159,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionFiveAnswer,
+                  questionAnswer: questionFiveAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
@@ -173,7 +174,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionSixAnswer,
+                  questionAnswer: questionSixAnswer,
                   title: "Every 5 Years",
                   value: "Every 5 years",
                   onChanged: (String? value) {
@@ -181,7 +182,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionSixAnswer,
+                  questionAnswer: questionSixAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
@@ -194,7 +195,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionSevenAnswer,
+                  questionAnswer: questionSevenAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
@@ -202,7 +203,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionSevenAnswer,
+                  questionAnswer: questionSevenAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {
@@ -215,7 +216,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionEightAnswer,
+                  questionAnswer: questionEightAnswer,
                   title: "Every 5 years ",
                   value: "Every 5 years ",
                   onChanged: (String? value) {
@@ -223,7 +224,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionEightAnswer,
+                  questionAnswer: questionEightAnswer,
                   title: "Yearly",
                   value: "Yearly",
                   onChanged: (String? value) {
@@ -232,7 +233,7 @@ class _PvModelsVCVCState extends State<PvModelsVC> {
                 ),
 
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionEightAnswer,
+                  questionAnswer: questionEightAnswer,
                   title: "N/A",
                   value: "N/A",
                   onChanged: (String? value) {

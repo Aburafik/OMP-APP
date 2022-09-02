@@ -32,11 +32,6 @@ class RequestSuccessMessageVC extends StatelessWidget {
                         .bodyText1!
                         .copyWith(fontSize: 20, fontWeight: FontWeight.bold)),
               ),
-
-              // Material(
-              //   shape: RoundedRectangleBorder(side: BorderSide()),
-
-              // ),
               Text(
                 "Our technicians will contact you shortly",
                 style: Theme.of(context)
@@ -49,9 +44,9 @@ class RequestSuccessMessageVC extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 15,
               ),
               CustomButtonComponent(
-                buttonText: "Back to request",
-                onPressed: () => Navigator.pop(context),
-              ),
+                  buttonText: "OK",
+                  onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                      context, "/home-page", (route) => false)),
             ],
           ),
         ),

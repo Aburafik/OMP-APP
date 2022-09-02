@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:omp_app/Components/Utils/color_themes.dart';
-import 'package:omp_app/Components/Utils/constants.dart';
+import 'package:omp_app/Components/answer_options_component.dart';
+import 'package:omp_app/Components/answer_textform_field.dart';
 import 'package:omp_app/Components/custom_button.dart';
+import 'package:omp_app/Components/question_text_component.dart';
 
-   class GeneralMaintenanceVC extends StatefulWidget {
+class GeneralMaintenanceVC extends StatefulWidget {
   const GeneralMaintenanceVC({Key? key}) : super(key: key);
 
   @override
@@ -36,7 +37,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionOneAnswer,
+                  questionAnswer: questionOneAnswer,
                   title: "Yes",
                   value: "Yes",
                   onChanged: (String? value) {
@@ -44,7 +45,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionOneAnswer,
+                  questionAnswer: questionOneAnswer,
                   title: "No",
                   value: "No",
                   onChanged: (String? value) {
@@ -60,7 +61,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionTwoAnswer,
+                  questionAnswer: questionTwoAnswer,
                   title: "Yes",
                   value: "Yes",
                   onChanged: (String? value) {
@@ -68,7 +69,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionTwoAnswer,
+                  questionAnswer: questionTwoAnswer,
                   title: "No",
                   value: "No",
                   onChanged: (String? value) {
@@ -84,7 +85,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionThreeAnswer,
+                  questionAnswer: questionThreeAnswer,
                   title: "Yes",
                   value: "Yes",
                   onChanged: (String? value) {
@@ -92,7 +93,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionThreeAnswer,
+                  questionAnswer: questionThreeAnswer,
                   title: "No",
                   value: "No",
                   onChanged: (String? value) {
@@ -105,16 +106,16 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
             Question(
               question: questionFour,
             ),
-            QuestionsTextFormField(),
+            AnswerTextFormField(),
             Question(
               question: questionFive,
             ),
-            QuestionsTextFormField(),
+            AnswerTextFormField(),
             Question(question: questionSix),
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionSixAnswer,
+                  questionAnswer: questionSixAnswer,
                   title: "Yes",
                   value: "Yes",
                   onChanged: (String? value) {
@@ -122,7 +123,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionSixAnswer,
+                  questionAnswer: questionSixAnswer,
                   title: "No",
                   value: "No",
                   onChanged: (String? value) {
@@ -136,7 +137,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionSevenAnswer,
+                  questionAnswer: questionSevenAnswer,
                   title: "Yes",
                   value: "Yes",
                   onChanged: (String? value) {
@@ -144,7 +145,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionSevenAnswer,
+                  questionAnswer: questionSevenAnswer,
                   title: "No",
                   value: "No",
                   onChanged: (String? value) {
@@ -158,7 +159,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionEightAnswer,
+                  questionAnswer: questionEightAnswer,
                   title: "Yes",
                   value: "Yes",
                   onChanged: (String? value) {
@@ -166,7 +167,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionEightAnswer,
+                  questionAnswer: questionEightAnswer,
                   title: "No",
                   value: "No",
                   onChanged: (String? value) {
@@ -179,12 +180,12 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
             Question(
               question: questionNine,
             ),
-            QuestionsTextFormField(),
+            AnswerTextFormField(),
             Question(question: questionTen),
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionTenAnswer,
+                  questionAnswer: questionTenAnswer,
                   title: "Yes",
                   value: "Yes",
                   onChanged: (String? value) {
@@ -192,7 +193,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionTenAnswer,
+                  questionAnswer: questionTenAnswer,
                   title: "No",
                   value: "No",
                   onChanged: (String? value) {
@@ -206,7 +207,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
             Row(
               children: [
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionElevenAnswer,
+                  questionAnswer: questionElevenAnswer,
                   title: "Yes",
                   value: "Yes",
                   onChanged: (String? value) {
@@ -214,7 +215,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                   },
                 ),
                 AnswerOptionsComponent(
-                  questionOneAnswer: questionElevenAnswer,
+                  questionAnswer: questionElevenAnswer,
                   title: "No",
                   value: "No",
                   onChanged: (String? value) {
@@ -225,13 +226,15 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
               ],
             ),
             Question(question: questionTwelve),
-            QuestionsTextFormField(),
-
+            AnswerTextFormField(),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 15),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
               child: CustomButtonComponent(
                 buttonText: "Submit",
-                onPressed: (){},
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, "/request-message", (route) => false);
+                },
               ),
             )
           ],
@@ -241,71 +244,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
   }
 }
 
-class AnswerOptionsComponent extends StatelessWidget {
-  AnswerOptionsComponent(
-      {Key? key,
-      required this.questionOneAnswer,
-      this.onChanged,
-      this.title,
-      this.value})
-      : super(key: key);
-
-  final String questionOneAnswer;
-  void Function(String?)? onChanged;
-  String? value;
-  String? title;
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-        child: RadioListTile(
-            title: Text(title!),
-            value: value!,
-            groupValue: questionOneAnswer,
-            onChanged: onChanged));
-  }
-}
-
-class Question extends StatelessWidget {
-  Question({Key? key, this.question}) : super(key: key);
-
-  String? question;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Text(
-        question!,
-        style: Theme.of(context)
-            .textTheme
-            .headline5!
-            .copyWith(fontSize: 16, color: BLACK_COLOR),
-      ),
-    );
-  }
-}
-
-class QuestionsTextFormField extends StatelessWidget {
-  QuestionsTextFormField({Key? key, this.maxLines}) : super(key: key);
-
-  int? maxLines;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextFormField(
-        maxLines: maxLines ?? 1,
-        decoration: InputDecoration(
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-            border: outlineInputBorder,
-            filled: true,
-            fillColor: GREY_COLOR_20,
-            focusedBorder: outlineInputBorder),
-      ),
-    );
-  }
-}
+  
 
 String questionOne =
     "1. Do you have a single major contractor on site who routinely provides maintenance support services? ";

@@ -78,15 +78,19 @@ List<Map<String, dynamic>> wasteType = [
     "image": FontAwesomeIcons.box,
   },
   {
-    "name": "Instrumental",
-    "image": FeatherIcons.radio,
-  },
-  {
     "name": "Battery System (Off-Grid)",
     "image": FeatherIcons.battery,
   },
   {
-    "name": "Other",
+    "name": "DC and AC Slide of System",
+    "image": FontAwesomeIcons.line,
+  },
+  {
+    "name": "Isolation Transformer and System Test",
+    "image": FeatherIcons.box,
+  },
+  {
+    "name": "Earthing and Lightning Protection System",
     "image": FontAwesomeIcons.question,
   },
 ];
@@ -104,10 +108,16 @@ selectedModelRoute(index, BuildContext context) {
       return Navigator.pushNamed(context, "/inverters-page");
     case 4:
       return Navigator.pushNamed(context, "/system-monitoring-page");
-    case 5:
-      return Navigator.pushNamed(context, "/instrumentals-page");
     case 6:
+      return Navigator.pushNamed(context, "/dc-ac-page");
+    case 5:
       return Navigator.pushNamed(context, "/battery-system-page");
+    case 7:
+      return Navigator.pushNamed(context, "/isolation-transformer-system-page");
+    case 8:
+      return Navigator.pushNamed(context, "/earthing-Lightening-page");
     default:
   }
 }
+
+// "/earthing-Lightening-page"

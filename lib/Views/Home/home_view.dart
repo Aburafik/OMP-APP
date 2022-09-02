@@ -1,10 +1,8 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
-import 'package:omp_app/Components/Utils/constants.dart';
 import 'package:omp_app/Components/category_selection.dart';
 import 'package:omp_app/Components/home_app_bar.dart';
-import 'package:omp_app/Components/price_market_component.dart';
 import 'package:omp_app/Components/protect_environment.dart';
 import 'package:omp_app/Components/select_item.dart';
 
@@ -116,7 +114,7 @@ class TopUsersCardComponent extends StatelessWidget {
                       children: [
                         Text("Adams Stephene",
                             style: Theme.of(context).textTheme.bodyText1),
-                       const SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: const [

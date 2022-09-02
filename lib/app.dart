@@ -9,12 +9,15 @@ import 'package:omp_app/Views/Notifications/notifications.dart';
 import 'package:omp_app/Views/Onboarding/onboarding_view.dart';
 import 'package:omp_app/Views/Onboarding/splash_screen.dart';
 import 'package:omp_app/Views/QuestionairsModels/battery_system.dart';
+import 'package:omp_app/Views/QuestionairsModels/earthing_lightening.dart';
 import 'package:omp_app/Views/QuestionairsModels/general_maintenance.dart';
-import 'package:omp_app/Views/QuestionairsModels/instrumentals.dart';
+import 'package:omp_app/Views/QuestionairsModels/dc_ac.dart';
 import 'package:omp_app/Views/QuestionairsModels/inverters.dart';
+import 'package:omp_app/Views/QuestionairsModels/isolation_transformer.dart';
 import 'package:omp_app/Views/QuestionairsModels/pv_array.dart';
 import 'package:omp_app/Views/QuestionairsModels/pv_models.dart';
 import 'package:omp_app/Views/QuestionairsModels/system_monitoring.dart';
+import 'package:omp_app/Views/Technicians/request_success_screen.dart';
 import 'package:omp_app/Views/home_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -42,6 +45,7 @@ class MyApp extends StatelessWidget {
         "/reset-password-view": (context) => const ForgotPasswordVC(),
         "/notification-view": (context) => const Notifications(),
         "/home-page": (context) => const HomePage(),
+        "/request-message": (context) => const RequestSuccessMessageVC(),
         "/registration-decide": (context) => const RegistrationDecideVC(),
         "/register-technician": (context) => const RegisterTechnicianVC(),
         "/general-maintenance-page": (context) => const GeneralMaintenanceVC(),
@@ -49,8 +53,10 @@ class MyApp extends StatelessWidget {
         "/pv-array-page": (context) => const PvArraysVC(),
         "/inverters-page": (context) => const InvertersVC(),
         "/system-monitoring-page": (context) => const SystemMonitoringVC(),
-        "/instrumentals-page": (context) => const InstrumentalsVC(),
+        "/dc-ac-page": (context) => const DcAndAcVC(),
         "/battery-system-page": (context) => const BatterySystemVC(),
+        "/isolation-transformer-system-page": (context) => const IsolationTransformerSystemTestVC(),
+        "/earthing-Lightening-page": (context) => const EarthingAndLighteningSystemVC(),
       },
     );
   }

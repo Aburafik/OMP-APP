@@ -125,6 +125,16 @@ final List<Widget> imageSliders = imgList
         )))
     .toList();
 
- var outlineInputBorder = OutlineInputBorder(
-        borderRadius: BorderRadius.circular(3),
-        borderSide: BorderSide(color: GREY_COLOR_50));
+var outlineInputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(3),
+    borderSide: BorderSide(color: GREY_COLOR_50));
+
+CircleAvatar appLogo(BuildContext context) {
+  return CircleAvatar(
+    backgroundColor: PRIMARY_COLOR,
+    radius: 50,
+    child: Text("OMP",
+        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+            fontSize: 30, fontWeight: FontWeight.bold, color: WHITE_COLOR)),
+  );
+}

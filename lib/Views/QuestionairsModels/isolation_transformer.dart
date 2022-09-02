@@ -2,27 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:omp_app/Components/answer_options_component.dart';
 import 'package:omp_app/Components/custom_button.dart';
 import 'package:omp_app/Components/question_text_component.dart';
+import 'package:omp_app/Views/QuestionairsModels/general_maintenance.dart';
 
-class InvertersVC extends StatefulWidget {
-  const InvertersVC({Key? key}) : super(key: key);
+class IsolationTransformerSystemTestVC extends StatefulWidget {
+  const IsolationTransformerSystemTestVC({Key? key}) : super(key: key);
 
   @override
-  State<InvertersVC> createState() => _InvertersVCState();
+  State<IsolationTransformerSystemTestVC> createState() =>
+      _IsolationTransformerSystemTestVCState();
 }
 
-class _InvertersVCState extends State<InvertersVC> {
+class _IsolationTransformerSystemTestVCState
+    extends State<IsolationTransformerSystemTestVC> {
   String questionOneAnswer = "";
   String questionTwoAnswer = "";
   String questionThreeAnswer = "";
   String questionFourAnswer = "";
   String questionFiveAnswer = "";
-  String questionSixAnswer = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Inverters"),
+        title: const Text("Isolation Transformer and System Test "),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -57,7 +59,6 @@ class _InvertersVCState extends State<InvertersVC> {
                     setState(() => questionOneAnswer = value!);
                   },
                 ),
-                // Spacer()
               ],
             ),
             Question(
@@ -89,7 +90,6 @@ class _InvertersVCState extends State<InvertersVC> {
                     setState(() => questionTwoAnswer = value!);
                   },
                 ),
-                // Spacer()
               ],
             ),
             Question(
@@ -115,13 +115,12 @@ class _InvertersVCState extends State<InvertersVC> {
                 ),
                 AnswerOptionsComponent(
                   questionAnswer: questionThreeAnswer,
-                  title: "N/a",
-                  value: "N/a",
+                  title: "N/A",
+                  value: "N/A",
                   onChanged: (String? value) {
                     setState(() => questionThreeAnswer = value!);
                   },
                 ),
-                // Spacer()
               ],
             ),
             Question(
@@ -131,16 +130,16 @@ class _InvertersVCState extends State<InvertersVC> {
               children: [
                 AnswerOptionsComponent(
                   questionAnswer: questionFourAnswer,
-                  title: "Yearly",
-                  value: "Yearly",
+                  title: "every 5yrs",
+                  value: "every 5yrs",
                   onChanged: (String? value) {
                     setState(() => questionFourAnswer = value!);
                   },
                 ),
                 AnswerOptionsComponent(
                   questionAnswer: questionFourAnswer,
-                  title: "Bi annual",
-                  value: "Bi annual",
+                  title: "Yearly",
+                  value: "Yearly",
                   onChanged: (String? value) {
                     setState(() => questionFourAnswer = value!);
                   },
@@ -172,8 +171,8 @@ class _InvertersVCState extends State<InvertersVC> {
                 ),
                 AnswerOptionsComponent(
                   questionAnswer: questionFiveAnswer,
-                  title: "Bi annual",
-                  value: "Bi annual",
+                  title: "Every 5yrs",
+                  value: "Every 5yrs",
                   onChanged: (String? value) {
                     setState(() => questionFiveAnswer = value!);
                   },
@@ -188,40 +187,6 @@ class _InvertersVCState extends State<InvertersVC> {
                 ),
               ],
             ),
-            Question(
-              question: questionSix,
-            ),
-
-            Row(
-              children: [
-                AnswerOptionsComponent(
-                  questionAnswer: questionSixAnswer,
-                  title: "Yearly",
-                  value: "Yearly",
-                  onChanged: (String? value) {
-                    setState(() => questionSixAnswer = value!);
-                  },
-                ),
-                AnswerOptionsComponent(
-                  questionAnswer: questionSixAnswer,
-                  title: "Bi annual",
-                  value: "Bi annual",
-                  onChanged: (String? value) {
-                    setState(() => questionSixAnswer = value!);
-                  },
-                ),
-                AnswerOptionsComponent(
-                  questionAnswer: questionSixAnswer,
-                  title: "N/A",
-                  value: "N/A",
-                  onChanged: (String? value) {
-                    setState(() => questionSixAnswer = value!);
-                  },
-                ),
-              ],
-            ),
-
-            // QuestionsTextFormField(),
 
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
@@ -238,17 +203,14 @@ class _InvertersVCState extends State<InvertersVC> {
 }
 
 String questionOne =
-    "1.How frequently do you look for warning labels, signs, and potential replacements?";
+    "1. How frequently do you look for labels and warning signs that might need to be replaced?";
 String questionTwo =
-    "2 .How frequently do you inspect the ventilation system and dust the inverter cabinet?";
+    "2. How frequently do you inspect the isolation transformers' condition and clear the dust from the heat rejection fin?";
 
 String questionThree =
-    "3. How frequently do you inspect cables for loose connections?";
+    "3. How frequently do you do insulation tests and verify the primary and secondary voltage, current, power, and frequency?";
 String questionFour =
-    "4. How frequently do you look for unusual operating temperatures?";
+    "4. How frequently do you measure the DC injection current and total harmonic current distortion?";
 
 String questionFive =
-    "5. How frequently do you test features like automatic disconnection upon grid power supply?";
-
-String questionSix =
-    " How frequently are the input and output power measured to check that the inverters are operating properly?";
+    "5. How frequently do you open the isolation switch to examine the voltage and current waveforms and see if the anti-islanding time is sufficient in compliance with the demands of the power company?";
