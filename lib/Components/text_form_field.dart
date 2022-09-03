@@ -34,7 +34,8 @@ class CustomTextFormField extends StatelessWidget {
         if (value!.isEmpty) {
           return errorMessage;
         }
-        ;
+        
+        return null;
       },
       decoration: InputDecoration(
         hintText: hintText,

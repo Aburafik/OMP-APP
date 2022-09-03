@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "185841650823",
+    "project_id": "omp-app-a406c",
+    "storage_bucket": "omp-app-a406c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185841650823:android:66ab78f430baf994843c22",
+        "android_client_info": {
+          "package_name": "com.example.omp_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185841650823-n9vom1qtuvgmtvs4qbgpiolnk75k2cln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYmiJI9PavLL_OGkqLDch6nwZt891kimg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185841650823-n9vom1qtuvgmtvs4qbgpiolnk75k2cln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

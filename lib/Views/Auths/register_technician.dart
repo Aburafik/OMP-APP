@@ -1,10 +1,12 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
+import 'package:omp_app/Components/Utils/constants.dart';
 import 'package:omp_app/Components/auth_options.dart';
 import 'package:omp_app/Components/custom_button.dart';
 import 'package:omp_app/Components/screen_description_text.dart';
 import 'package:omp_app/Components/text_form_field.dart';
+import 'package:omp_app/Repository/auth_repo.dart';
 
 class RegisterTechnicianVC extends StatefulWidget {
   const RegisterTechnicianVC({Key? key}) : super(key: key);
@@ -24,6 +26,7 @@ class _RegisterTechnicianVCState extends State<RegisterTechnicianVC> {
   TextEditingController installationYearController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController contactController = TextEditingController();
+  final AuthUser _auth = AuthUser();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,9 +111,19 @@ class _RegisterTechnicianVCState extends State<RegisterTechnicianVC> {
                     padding: const EdgeInsets.only(top: 30),
                     child: CustomButtonComponent(
                       buttonText: "Create account",
-                      onPressed: () {
-                        print("Hello");
-                        if (_formKey.currentState!.validate()) {}
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          startLoading();
+                          await _auth.signUpTechnician(
+                            context: context,
+                              nameOrCompany: nameController.text,
+                              email: emailController.text,
+                              location: locationController.text,
+                              contact: contactController.text,
+                              password: passwordController.text);
+
+                          stopLoading();
+                        }
                       },
                     ),
                   ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
 import 'package:omp_app/Views/Home/home_view.dart';
@@ -137,4 +139,27 @@ CircleAvatar appLogo(BuildContext context) {
         style: Theme.of(context).textTheme.bodyText1!.copyWith(
             fontSize: 30, fontWeight: FontWeight.bold, color: WHITE_COLOR)),
   );
+}
+
+
+
+
+showToast({String? msg, Color? color}) {
+  return Fluttertoast.showToast(
+      msg: msg!,
+      gravity: ToastGravity.TOP,
+      backgroundColor: color ?? Colors.green,
+      // textColor: Colors.white,
+      fontSize: 16.0);
+}
+
+startLoading() {
+  return EasyLoading.show(
+    // status: "Signing Up...",
+    maskType: EasyLoadingMaskType.black,
+  );
+}
+
+stopLoading() {
+  return EasyLoading.dismiss();
 }

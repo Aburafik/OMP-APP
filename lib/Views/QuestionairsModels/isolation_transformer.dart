@@ -1,8 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:omp_app/Components/Utils/constants.dart';
 import 'package:omp_app/Components/answer_options_component.dart';
 import 'package:omp_app/Components/custom_button.dart';
 import 'package:omp_app/Components/question_text_component.dart';
-import 'package:omp_app/Views/QuestionairsModels/general_maintenance.dart';
+import 'package:omp_app/Providers/user_provider.dart';
+import 'package:omp_app/Repository/auth_repo.dart';
+import 'package:provider/provider.dart';
 
 class IsolationTransformerSystemTestVC extends StatefulWidget {
   const IsolationTransformerSystemTestVC({Key? key}) : super(key: key);
@@ -19,12 +23,16 @@ class _IsolationTransformerSystemTestVCState
   String questionThreeAnswer = "";
   String questionFourAnswer = "";
   String questionFiveAnswer = "";
+  AuthUser authUser = AuthUser();
 
   @override
   Widget build(BuildContext context) {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+    UserProvider userProvider =
+        Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Isolation Transformer and System Test "),
+        title: const Text("Isolation Transformer and System Test"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -192,7 +200,32 @@ class _IsolationTransformerSystemTestVCState
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
               child: CustomButtonComponent(
                 buttonText: "Submit",
-                onPressed: () {},
+                onPressed: () async {
+                  startLoading();
+
+                  await authUser.sendQuestion(
+                    senderLocation: userProvider.userData['location'],
+                    id: userId,
+                    senderName: userProvider.userData['full_name'],
+                    senderContact: userProvider.userData['contact'],
+                    context: context,
+                    questionTitle: "Isolation Transformer and System Test",
+                    questionOne: questionOne,
+                    questionTwo: questionTwo,
+                    questionThree: questionThree,
+                    questionFour: questionFour,
+                    questionFive: questionFive,
+                    questionOneAnswer: questionOneAnswer,
+                    questionTwoAnswer: questionTwoAnswer,
+                    questionThreeAnswer: questionThreeAnswer,
+                    questionFourAnswer: questionFourAnswer,
+                    questionFiveAnswer: questionFiveAnswer,
+                  );
+                  stopLoading();
+
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, "/request-message", (route) => false);
+                },
               ),
             )
           ],

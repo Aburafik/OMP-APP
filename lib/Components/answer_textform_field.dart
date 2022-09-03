@@ -4,15 +4,17 @@ import 'package:omp_app/Components/Utils/color_themes.dart';
 import 'package:omp_app/Components/Utils/constants.dart';
 
 class AnswerTextFormField extends StatelessWidget {
-  AnswerTextFormField({Key? key, this.maxLines}) : super(key: key);
+ AnswerTextFormField({Key? key, this.maxLines,this.controller}) : super(key: key);
 
-  int? maxLines;
+  final int? maxLines;
+  TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
+        controller: controller,
         maxLines: maxLines ?? 1,
         decoration: InputDecoration(
             contentPadding:

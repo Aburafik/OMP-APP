@@ -37,10 +37,10 @@ class MyAccountComponent extends StatelessWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Icon(Icons.arrow_circle_right, color: GREY_COLOR_20),
                 )),
-            AccountTileWidget(
+            const AccountTileWidget(
               icon: FontAwesomeIcons.addressCard,
               title: "Payment",
-              trailingWidget: const Padding(
+              trailingWidget: Padding(
                 padding: EdgeInsets.all(8.0),
                 child:
                      Icon(Icons.arrow_circle_right, color: GREY_COLOR_20),

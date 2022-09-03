@@ -1,8 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:omp_app/Components/Utils/constants.dart';
 import 'package:omp_app/Components/answer_options_component.dart';
 import 'package:omp_app/Components/answer_textform_field.dart';
 import 'package:omp_app/Components/custom_button.dart';
 import 'package:omp_app/Components/question_text_component.dart';
+import 'package:omp_app/Providers/user_provider.dart';
+import 'package:omp_app/Repository/auth_repo.dart';
+import 'package:provider/provider.dart';
 
 class GeneralMaintenanceVC extends StatefulWidget {
   const GeneralMaintenanceVC({Key? key}) : super(key: key);
@@ -21,11 +26,20 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
   String questionTenAnswer = "";
   String questionElevenAnswer = "";
   String questionTwelveAnswer = "";
+  AuthUser authUser = AuthUser();
+
+  TextEditingController questionFourAnwerController = TextEditingController();
+  TextEditingController questionFiveAnwerController = TextEditingController();
+  TextEditingController questionNineAnwerController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+    UserProvider userProvider =
+        Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
-        title: Text("General Maintenance"),
+        title: const Text("General Maintenance"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -52,7 +66,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                     setState(() => questionOneAnswer = value!);
                   },
                 ),
-                Spacer()
+                const Spacer()
               ],
             ),
             Question(
@@ -76,7 +90,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                     setState(() => questionTwoAnswer = value!);
                   },
                 ),
-                Spacer()
+                const Spacer()
               ],
             ),
             Question(
@@ -100,17 +114,21 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                     setState(() => questionThreeAnswer = value!);
                   },
                 ),
-                Spacer()
+                const Spacer()
               ],
             ),
             Question(
               question: questionFour,
             ),
-            AnswerTextFormField(),
+            AnswerTextFormField(
+              controller: questionFourAnwerController,
+            ),
             Question(
               question: questionFive,
             ),
-            AnswerTextFormField(),
+            AnswerTextFormField(
+              controller: questionFiveAnwerController,
+            ),
             Question(question: questionSix),
             Row(
               children: [
@@ -130,7 +148,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                     setState(() => questionSixAnswer = value!);
                   },
                 ),
-                Spacer()
+                const Spacer()
               ],
             ),
             Question(question: questionSeven),
@@ -152,7 +170,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                     setState(() => questionSevenAnswer = value!);
                   },
                 ),
-                Spacer()
+                const Spacer()
               ],
             ),
             Question(question: questionEight),
@@ -174,13 +192,15 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                     setState(() => questionEightAnswer = value!);
                   },
                 ),
-                Spacer()
+                const Spacer()
               ],
             ),
             Question(
               question: questionNine,
             ),
-            AnswerTextFormField(),
+            AnswerTextFormField(
+              controller: questionNineAnwerController,
+            ),
             Question(question: questionTen),
             Row(
               children: [
@@ -200,7 +220,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                     setState(() => questionTenAnswer = value!);
                   },
                 ),
-                Spacer()
+                const Spacer()
               ],
             ),
             Question(question: questionEleven),
@@ -222,7 +242,7 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
                     setState(() => questionElevenAnswer = value!);
                   },
                 ),
-                Spacer()
+                const Spacer()
               ],
             ),
             Question(question: questionTwelve),
@@ -231,9 +251,47 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
               child: CustomButtonComponent(
                 buttonText: "Submit",
-                onPressed: () {
+                onPressed: () async {
+                  startLoading();
+
+                  await authUser.sendQuestion(
+                      senderLocation: userProvider.userData['location'],
+                      id: userId,
+                      senderName: userProvider.userData['full_name'],
+                      senderContact: userProvider.userData['contact'],
+                      context: context,
+                      questionTitle: "General Maintenance",
+                      questionOne: questionOne,
+                      questionTwo: questionTwo,
+                      questionThree: questionThree,
+                      questionFour: questionFour,
+                      questionFive: questionFive,
+                      questionSix: questionSix,
+                      questionSeven: questionSeven,
+                      questionEight: questionEight,
+                      questionNine: questionNine,
+                      questionTen: questionTen,
+                      questionEleven: questionEleven,
+                      questionTwelve: questionTwelve,
+                      questionOneAnswer: questionOneAnswer,
+                      questionTwoAnswer: questionTwoAnswer,
+                      questionThreeAnswer: questionThreeAnswer,
+                      questionFourAnswer: questionFourAnwerController.text,
+                      questionFiveAnswer: questionFiveAnwerController.text,
+                      questionSixAnswer: questionSixAnswer,
+                      questionSevenAnswer: questionSevenAnswer,
+                      questionEightAnswer: questionEightAnswer,
+                      questionNineAnswer: questionNineAnwerController.text,
+                      questionTenAnswer: questionTenAnswer,
+                      questionElevenAnswer: questionElevenAnswer,
+                      questionTwelveAnswer: questionTwelveAnswer);
+                  stopLoading();
+
                   Navigator.pushNamedAndRemoveUntil(
                       context, "/request-message", (route) => false);
+
+                  // Navigator.pushNamedAndRemoveUntil(
+                  //     context, "/request-message", (route) => false);
                 },
               ),
             )
@@ -243,8 +301,6 @@ class _GeneralMaintenanceVCState extends State<GeneralMaintenanceVC> {
     );
   }
 }
-
-  
 
 String questionOne =
     "1. Do you have a single major contractor on site who routinely provides maintenance support services? ";

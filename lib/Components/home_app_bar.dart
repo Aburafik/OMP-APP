@@ -1,11 +1,18 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
+import 'package:omp_app/Providers/user_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeAppBarComponent extends StatelessWidget {
   const HomeAppBarComponent({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    UserProvider userProvider =
+        Provider.of<UserProvider>(context, listen: true);
+
+    userProvider.userData['location'];
+
     return Column(
       children: [
         Row(
@@ -19,7 +26,7 @@ class HomeAppBarComponent extends StatelessWidget {
               width: 10,
             ),
             Text(
-              "Kasoa",
+              userProvider.userData['location'],
               style: Theme.of(context)
                   .textTheme
                   .bodyText1!
@@ -30,7 +37,9 @@ class HomeAppBarComponent extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text("User Name"),
+            Text(
+              "Hi, ${userProvider.userData['full_name']}",
+            ),
             IconButton(
               onPressed: () {},
               icon: const Icon(FeatherIcons.bell),
@@ -41,5 +50,3 @@ class HomeAppBarComponent extends StatelessWidget {
     );
   }
 }
-
-    

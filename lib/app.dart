@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
 import 'package:omp_app/Views/Auths/forgot_password_view.dart';
 import 'package:omp_app/Views/Auths/register_technician.dart';
@@ -26,14 +27,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-            titleTextStyle: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 20,color: BLACK_COLOR),
-            iconTheme: IconThemeData(color: BLACK_COLOR),
+            titleTextStyle: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(fontSize: 20, color: BLACK_COLOR),
+            iconTheme: const IconThemeData(color: BLACK_COLOR),
             elevation: 0,
-            backgroundColor: Color(0xffF4F4F4)),
+            backgroundColor: const Color(0xffF4F4F4)),
         scaffoldBackgroundColor: const Color(0xffF4F4F4),
       ),
       initialRoute: "/",
@@ -55,8 +60,10 @@ class MyApp extends StatelessWidget {
         "/system-monitoring-page": (context) => const SystemMonitoringVC(),
         "/dc-ac-page": (context) => const DcAndAcVC(),
         "/battery-system-page": (context) => const BatterySystemVC(),
-        "/isolation-transformer-system-page": (context) => const IsolationTransformerSystemTestVC(),
-        "/earthing-Lightening-page": (context) => const EarthingAndLighteningSystemVC(),
+        "/isolation-transformer-system-page": (context) =>
+            const IsolationTransformerSystemTestVC(),
+        "/earthing-Lightening-page": (context) =>
+            const EarthingAndLighteningSystemVC(),
       },
     );
   }

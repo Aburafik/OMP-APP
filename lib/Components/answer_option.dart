@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnswerOptionsComponent extends StatelessWidget {
-  AnswerOptionsComponent(
+ const  AnswerOptionsComponent(
       {Key? key,
       required this.questionAnswer,
       this.onChanged,
@@ -10,9 +10,9 @@ class AnswerOptionsComponent extends StatelessWidget {
       : super(key: key);
 
   final String questionAnswer;
-  void Function(String?)? onChanged;
-  String? value;
-  String? title;
+  final void Function(String?)? onChanged;
+  final String? value;
+  final String? title;
   @override
   Widget build(BuildContext context) {
     return Expanded(

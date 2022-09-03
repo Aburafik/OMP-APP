@@ -11,10 +11,10 @@ class CustomButtonComponent extends StatelessWidget {
     this.onPressed,
   }) : super(key: key);
   bool hasIcon = false;
-  IconData? icon;
-  String? buttonText;
-  Color? iconColor;
-  Function()? onPressed;
+  final IconData? icon;
+  final String? buttonText;
+  final Color? iconColor;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
