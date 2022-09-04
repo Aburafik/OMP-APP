@@ -3,14 +3,14 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
+import 'package:omp_app/Views/History/my_history.dart';
 import 'package:omp_app/Views/Home/home_view.dart';
 import 'package:omp_app/Views/Profile/profile_view.dart';
 import 'package:omp_app/Views/Technicians/available_technicians.dart';
 
-List<Widget> pages = const [
+List<Widget> pages = [
   HomeVC(),
-  Center(child: Text("My History")),
-
+  MyHistoryVC(),
   AvailableTechniciansVC(),
   // Center(child: Text("Wallet")),
   ProfileVC()
@@ -140,9 +140,6 @@ CircleAvatar appLogo(BuildContext context) {
             fontSize: 30, fontWeight: FontWeight.bold, color: WHITE_COLOR)),
   );
 }
-
-
-
 
 showToast({String? msg, Color? color}) {
   return Fluttertoast.showToast(

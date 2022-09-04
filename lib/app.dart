@@ -6,6 +6,7 @@ import 'package:omp_app/Views/Auths/register_technician.dart';
 import 'package:omp_app/Views/Auths/registration_auth_decide.dart';
 import 'package:omp_app/Views/Auths/sign_in_view.dart';
 import 'package:omp_app/Views/Auths/sign_up_view.dart';
+import 'package:omp_app/Views/History/my_history.dart';
 import 'package:omp_app/Views/Notifications/notifications.dart';
 import 'package:omp_app/Views/Onboarding/onboarding_view.dart';
 import 'package:omp_app/Views/Onboarding/splash_screen.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         "/reset-password-view": (context) => const ForgotPasswordVC(),
         "/notification-view": (context) => const Notifications(),
         "/home-page": (context) => const HomePage(),
+        "/my-history-page": (context) => const MyHistoryVC(),
         "/request-message": (context) => const RequestSuccessMessageVC(),
         "/registration-decide": (context) => const RegistrationDecideVC(),
         "/register-technician": (context) => const RegisterTechnicianVC(),

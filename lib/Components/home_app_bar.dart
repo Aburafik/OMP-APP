@@ -10,9 +10,7 @@ class HomeAppBarComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     UserProvider userProvider =
         Provider.of<UserProvider>(context, listen: true);
-
     userProvider.userData['location'];
-
     return Column(
       children: [
         Row(
@@ -26,19 +24,19 @@ class HomeAppBarComponent extends StatelessWidget {
               width: 10,
             ),
             Text(
-              userProvider.userData['location'],
+              userProvider.userData['location'] ?? 'location',
               style: Theme.of(context)
                   .textTheme
                   .bodyText1!
                   .copyWith(color: GREY_COLOR_50),
-            )
+            ),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Hi, ${userProvider.userData['full_name']}",
+              userProvider.userData['full_name'] ?? "",
             ),
             IconButton(
               onPressed: () {},

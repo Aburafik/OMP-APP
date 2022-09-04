@@ -34,14 +34,11 @@ class HomeVC extends StatelessWidget {
                                 child:
                                     const EnvironmentProtectionTipsCarouselComponent(),
                               ),
-
                               SelectItemTitleComponent(
                                 textTitle: "Choose a Model",
                                 hasIcon: false,
                               ),
                               const RequestCategorySelectionComponent(),
-
-                              // const PricesMarketComponent(),
                             ],
                           ),
                         ),
@@ -56,29 +53,11 @@ class HomeVC extends StatelessWidget {
   }
 }
 
-class TopUsersDisplayComponent extends StatelessWidget {
-  const TopUsersDisplayComponent({Key? key}) : super(key: key);
+class TechniciansCardComponent extends StatelessWidget {
+  TechniciansCardComponent({Key? key, this.technicianDetails})
+      : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListView.builder(
-          shrinkWrap: true,
-          itemCount: 10,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) => const TopUsersCardComponent(),
-        )
-      ],
-    );
-  }
-}
-
-class TopUsersCardComponent extends StatelessWidget {
-  const TopUsersCardComponent({
-    Key? key,
-  }) : super(key: key);
-
+  dynamic technicianDetails;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -112,14 +91,14 @@ class TopUsersCardComponent extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Adams Stephene",
+                        Text(technicianDetails['full_name'],
                             style: Theme.of(context).textTheme.bodyText1),
                         const SizedBox(height: 10),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
-                          children: const [
+                          children: [
                             Icon(Icons.location_on, color: Colors.yellow),
-                            Text("45454")
+                            Text(technicianDetails['location'])
                           ],
                         )
                       ],
@@ -129,7 +108,9 @@ class TopUsersCardComponent extends StatelessWidget {
                       children: [
                         const Text("Last active"),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              ///add technician Contact here
+                            },
                             icon: const Icon(FeatherIcons.phoneCall,
                                 color: PRIMARY_COLOR))
                       ],

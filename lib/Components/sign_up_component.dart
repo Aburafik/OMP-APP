@@ -1,7 +1,9 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:omp_app/Components/Utils/constants.dart';
 import 'package:omp_app/Components/custom_button.dart';
 import 'package:omp_app/Components/text_form_field.dart';
+import 'package:omp_app/Repository/auth_repo.dart';
 
 class SignUpFormComponent extends StatefulWidget {
   const SignUpFormComponent({Key? key}) : super(key: key);
@@ -14,7 +16,7 @@ class _SignUpFormComponentState extends State<SignUpFormComponent> {
   bool isVisible = true;
 
   final _formKey = GlobalKey<FormState>();
-
+  AuthUser _authUser = AuthUser();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController locationController = TextEditingController();
@@ -23,9 +25,7 @@ class _SignUpFormComponentState extends State<SignUpFormComponent> {
   TextEditingController contactController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return 
-    
-    Form(
+    return Form(
       key: _formKey,
       child: Column(
         children: [
@@ -97,9 +97,21 @@ class _SignUpFormComponentState extends State<SignUpFormComponent> {
             padding: const EdgeInsets.only(top: 30),
             child: CustomButtonComponent(
               buttonText: "Create account",
-              onPressed: () {
-                print("Hello");
-                if (_formKey.currentState!.validate()) {}
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  startLoading();
+
+                  await _authUser.signUpCustomer(
+                      email: emailController.text,
+                      password: passwordController.text,
+                      nameOrCompany: nameController.text,
+                      location: locationController.text,
+                      installationYear: installationYearController.text,
+                      contact: contactController.text,
+                      context: context);
+
+                  stopLoading();
+                }
               },
             ),
           ),
@@ -123,7 +135,5 @@ class _SignUpFormComponentState extends State<SignUpFormComponent> {
         ],
       ),
     );
-
-    
   }
 }

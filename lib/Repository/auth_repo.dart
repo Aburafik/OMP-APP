@@ -2,15 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:omp_app/Components/Utils/constants.dart';
+import 'package:omp_app/Providers/routing_provider.dart';
 import 'package:omp_app/Repository/db_repo.dart';
-// import 'package:ilm_online_app/Components/utils/constants.dart';
-// import 'package:ilm_online_app/Repository/db_repo.dart';
-// import 'package:ilm_online_app/providers/user_provider.dart';
-// import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 FirebaseAuth _auth = FirebaseAuth.instance;
 CollectionReference users = FirebaseFirestore.instance.collection('users');
+CollectionReference technicians =
+    FirebaseFirestore.instance.collection('technicians');
 CollectionReference requests =
     FirebaseFirestore.instance.collection('Requests');
 
@@ -24,19 +25,42 @@ class AuthUser {
       String? location,
       String? installationYear,
       BuildContext? context,
+      String? accountType,
       String? id}) async {
-    return users.doc(id).set({
-      'full_name': fullName,
-      'email': email,
-      'contact': contact,
-      "location": location,
-      "installationYear": installationYear,
-      'created_at': DateTime.now(),
-    }).then((value) {
-      Navigator.pushNamed(context!, "/home-page");
-    });
+    return users.doc(id).set(
+      {
+        'full_name': fullName,
+        'email': email,
+        'contact': contact,
+        "location": location,
+        "installationYear": installationYear,
+        "account_type": accountType,
+        'created_at': DateTime.now(),
+      },
+    ).then(
+      (value) {
+        Navigator.pushNamed(context!, "/home-page");
+      },
+    );
   }
 
+//// add technicians
+  addTechnician({
+    String? email,
+    String? fullName,
+    String? contact,
+    String? location,
+  }) async {
+    return technicians.add(
+      {
+        'full_name': fullName,
+        'email': email,
+        'contact': contact,
+        "location": location,
+        'created_at': Timestamp.now().millisecondsSinceEpoch,
+      },
+    );
+  }
 ////SignUp User
 
   signUpCustomer({
@@ -49,7 +73,6 @@ class AuthUser {
     String? contact,
   }) async {
     final pref = await SharedPreferences.getInstance();
-
     try {
       await _auth
           .createUserWithEmailAndPassword(
@@ -57,15 +80,18 @@ class AuthUser {
         password: password!,
       )
           .then((value) {
+        
         addUser(
-            email: email,
-            fullName: nameOrCompany,
-            context: context,
-            contact: contact,
-            location: location,
-            installationYear: installationYear,
-            id: value.user!.uid);
-        // getUser(context);
+          email: email,
+          fullName: nameOrCompany,
+          context: context,
+          contact: contact,
+          location: location,
+          installationYear: installationYear,
+          accountType: "Customer",
+          id: value.user!.uid,
+        );
+        getUser(context);
         pref.setString('user_id', value.user!.uid);
         // UserProvider userProvider =
         //     Provider.of<UserProvider>(context, listen: false);
@@ -108,14 +134,22 @@ class AuthUser {
         password: password!,
       )
           .then((value) {
+            addTechnician(
+          email: email,
+          fullName: nameOrCompany,
+          contact: contact,
+          location: location
+        );
         addUser(
-            email: email,
-            fullName: nameOrCompany,
-            context: context,
-            contact: contact,
-            location: location,
-            installationYear: "not",
-            id: value.user!.uid);
+          email: email,
+          fullName: nameOrCompany,
+          context: context,
+          contact: contact,
+          location: location,
+          installationYear: "N/A",
+          accountType: "Technician",
+          id: value.user!.uid,
+        );
         getUser(context);
         pref.setString('user_id', value.user!.uid);
         // UserProvider userProvider =
@@ -174,6 +208,8 @@ class AuthUser {
   ////SignOut User
   signOutUser({BuildContext? context}) async {
     final prefs = await SharedPreferences.getInstance();
+    RoutingProvider routingProvider =
+        Provider.of<RoutingProvider>(context!, listen: false);
 
     await _auth.signOut().then(
       (value) {
@@ -192,9 +228,14 @@ class AuthUser {
             stopLoading();
 
             Navigator.pushReplacementNamed(
-              context!,
-              "/Sign-in-Screen",
+              context,
+              "/sign-in-view",
             );
+            routingProvider.nextPage(0);
+            // Navigator.pushNamedAndRemoveUntil(
+            //   context!,
+            //   "/sign-in-view",
+            // );
           },
         );
       },

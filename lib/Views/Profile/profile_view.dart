@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
 import 'package:omp_app/Components/custom_button.dart';
 import 'package:omp_app/Components/user_profile_component.dart';
+import 'package:omp_app/Providers/routing_provider.dart';
+import 'package:omp_app/Repository/auth_repo.dart';
+import 'package:provider/provider.dart';
 
 class ProfileVC extends StatelessWidget {
-  const ProfileVC({Key? key}) : super(key: key);
+  ProfileVC({Key? key}) : super(key: key);
+  AuthUser _authUser = AuthUser();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
+        automaticallyImplyLeading: false,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: Text(
           "Profile",
@@ -45,11 +49,17 @@ class ProfileVC extends StatelessWidget {
                 children: [
                   const Icon(Icons.logout),
                   const SizedBox(width: 10),
-                  Text("SignOut",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline2!
-                          .copyWith(fontSize: 16))
+                  GestureDetector(
+                    onTap: () {
+                      _authUser.signOutUser(context: context);
+                      // routingProvider.nextPage(0);
+                    },
+                    child: Text("SignOut",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline2!
+                            .copyWith(fontSize: 16)),
+                  )
                 ],
               ),
             ),
