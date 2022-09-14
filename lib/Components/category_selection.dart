@@ -82,7 +82,7 @@ List<Map<String, dynamic>> wasteType = [
     "image": FeatherIcons.battery,
   },
   {
-    "name": "DC and AC Slide of System",
+    "name": "DC and AC Side of System",
     "image": FontAwesomeIcons.line,
   },
   {

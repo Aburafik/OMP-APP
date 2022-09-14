@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
+import 'package:omp_app/Repository/db_repo.dart';
 import 'package:omp_app/Views/Auths/forgot_password_view.dart';
 import 'package:omp_app/Views/Auths/register_technician.dart';
 import 'package:omp_app/Views/Auths/registration_auth_decide.dart';
@@ -22,8 +24,37 @@ import 'package:omp_app/Views/QuestionairsModels/system_monitoring.dart';
 import 'package:omp_app/Views/Technicians/request_success_screen.dart';
 import 'package:omp_app/Views/home_page.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  String? iD;
+  isUserExist() async {
+    _firebaseAuth.authStateChanges().listen(
+      (user) {
+        if (user != null) {
+          setState(() {
+            iD = user.uid;
+            print("The User ID is $iD");
+            getUser(context);
+          });
+        }
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    isUserExist();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +76,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (context) => const SplashScreen(),
-        "/onboarding-view": (context) => const OnboardingView(),
+        "/onboarding-view": (context) =>
+            iD == null ? const OnboardingView() : HomePage(),
         "/sign-in-view": (context) => const SignInVC(),
         "/sign-up-view": (context) => const SignUpVC(),
         "/reset-password-view": (context) => const ForgotPasswordVC(),

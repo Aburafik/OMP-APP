@@ -2,8 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
 import 'package:omp_app/Components/Utils/constants.dart';
-import 'package:omp_app/Views/Home/home_view.dart';
-
 
 class EnvironmentProtectionTipsCarouselComponent extends StatefulWidget {
   const EnvironmentProtectionTipsCarouselComponent({Key? key})
@@ -22,7 +20,8 @@ class _EnvironmentProtectionTipsCarouselComponentState
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return Column(
+      children: [
       CarouselSlider(
         items: imageSliders,
         carouselController: _controller,

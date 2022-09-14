@@ -39,14 +39,11 @@ class _RegisterTechnicianVCState extends State<RegisterTechnicianVC> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // const SizedBox(height: 20),
             ScreenDescriptionTextComponent(
               title: "Creat account",
               subtitle: "Please enter the following details",
             ),
-            // const SignUpFormComponent(),
 
             Form(
               key: _formKey,
@@ -102,10 +99,10 @@ class _RegisterTechnicianVCState extends State<RegisterTechnicianVC> {
                   ),
                   CustomTextFormField(
                     controller: contactController,
-                    hintText: "Contact Address",
+                    hintText: "Contact",
                     hasPreffix: true,
                     prefixIcon: FeatherIcons.phone,
-                    errorMessage: "Contact Address can't be empty",
+                    errorMessage: "Contact can't be empty",
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 30),
@@ -115,14 +112,13 @@ class _RegisterTechnicianVCState extends State<RegisterTechnicianVC> {
                         if (_formKey.currentState!.validate()) {
                           startLoading();
                           await _auth.signUpTechnician(
-                            context: context,
+                              context: context,
                               nameOrCompany: nameController.text,
                               email: emailController.text,
                               location: locationController.text,
                               contact: contactController.text,
                               password: passwordController.text);
 
-                          stopLoading();
                         }
                       },
                     ),

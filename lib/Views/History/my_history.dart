@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
 import 'package:omp_app/Providers/user_provider.dart';
+import 'package:omp_app/Views/History/request_details.dart';
 import 'package:provider/provider.dart';
 
 class MyHistoryVC extends StatefulWidget {
@@ -24,6 +25,9 @@ class _MyHistoryVCState extends State<MyHistoryVC> {
         Provider.of<UserProvider>(context, listen: true);
 
     String userType = userProvider.userData['account_type'];
+    // String senderID = userProvider.userData['senderId'];
+    // String currrentUser = FirebaseAuth.instance.currentUser!.uid;
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -69,82 +73,84 @@ class MyHistoryCardComponent extends StatelessWidget {
     var formatDate = DateFormat('MMM k:mm a').format(dateTime).toString();
 
     TextStyle statusTextStyle = Theme.of(context).textTheme.bodyText1!;
-    return Card(
-      child: SizedBox(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CircleAvatar(
-                backgroundColor: PRIMARY_COLOR,
-                child: Icon(
-                  FeatherIcons.bell,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Column(
+    return currrentUser == histories['senderId']
+        ? Card(
+            child: SizedBox(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "${histories!['questionTitle']}",
-                      style: Theme.of(context).textTheme.bodyText1,
+                    const CircleAvatar(
+                      backgroundColor: PRIMARY_COLOR,
+                      child: Icon(
+                        FeatherIcons.bell,
+                        color: Colors.white,
+                      ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: Row(
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(
-                            FeatherIcons.mapPin,
-                            size: 15,
+                          Text(
+                            "${histories!['questionTitle']}",
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
-                          Text(histories["sender_location"],
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline2!
-                                  .copyWith(fontSize: 14)),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  FeatherIcons.mapPin,
+                                  size: 15,
+                                ),
+                                Text(histories["sender_location"],
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline2!
+                                        .copyWith(fontSize: 14)),
+                              ],
+                            ),
+                          ),
+                          Wrap(
+                            children: [
+                              const Icon(FeatherIcons.user, size: 15),
+                              Text(histories["full_name"])
+                            ],
+                          )
                         ],
                       ),
                     ),
-                    Wrap(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const Icon(FeatherIcons.user, size: 15),
-                        Text(histories["full_name"])
+                        const Icon(
+                          FeatherIcons.circle,
+                          color: Colors.red,
+                          size: 15,
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.end,
+                          children: [
+                            Text(formatDate,
+                                style: Theme.of(context).textTheme.caption),
+                            const Icon(FeatherIcons.clock, size: 15)
+                          ],
+                        )
                       ],
                     )
                   ],
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const Icon(
-                    FeatherIcons.circle,
-                    color: Colors.red,
-                    size: 15,
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.end,
-                    children: [
-                      Text(formatDate,
-                          style: Theme.of(context).textTheme.caption),
-                      const Icon(FeatherIcons.clock, size: 15)
-                    ],
-                  )
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+            ),
+          )
+        : const SizedBox();
   }
 }
 
@@ -180,9 +186,14 @@ class RequestsCardComponent extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "${histories!['questionTitle']}",
-                      style: Theme.of(context).textTheme.bodyText1,
+                    SizedBox(
+                      width: 150,
+                      height: 20,
+                      child: Text(
+                        "${histories!['questionTitle']}",
+                        style: Theme.of(context).textTheme.bodyText1,
+                        overflow: TextOverflow.fade,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
@@ -205,6 +216,33 @@ class RequestsCardComponent extends StatelessWidget {
                         const Icon(FeatherIcons.user, size: 15),
                         Text(histories["full_name"])
                       ],
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RequestDetailsVC(
+                                      requestDetails: histories,
+                                    )));
+                      },
+                      child: Material(
+                          color: PRIMARY_COLOR,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Text(
+                              "View request",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1!
+                                  .copyWith(color: WHITE_COLOR),
+                            ),
+                          )),
                     )
                   ],
                 ),
@@ -218,16 +256,28 @@ class RequestsCardComponent extends StatelessWidget {
                     size: 15,
                   ),
                   const SizedBox(
-                    height: 50,
+                    height: 6,
                   ),
-                  Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.end,
-                    children: [
-                      Text(formatDate,
-                          style: Theme.of(context).textTheme.caption),
-                      const Icon(FeatherIcons.clock, size: 15)
-                    ],
-                  )
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.end,
+                      children: [
+                        Text(formatDate,
+                            style: Theme.of(context).textTheme.caption),
+                        const Icon(FeatherIcons.clock, size: 15)
+                      ],
+                    ),
+                  ),
+                  // SizedBox(height: 5),
+                  Material(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                      color: PRIMARY_COLOR,
+                      child: const Padding(
+                        padding: EdgeInsets.all(5.0),
+                        child: Text("Call Sender"),
+                      ))
                 ],
               )
             ],

@@ -20,30 +20,33 @@ class HomeVC extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 15),
-                      const HomeAppBarComponent(),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height / 3.5,
-                                child:
-                                    const EnvironmentProtectionTipsCarouselComponent(),
-                              ),
-                              SelectItemTitleComponent(
-                                textTitle: "Choose a Model",
-                                hasIcon: false,
-                              ),
-                              const RequestCategorySelectionComponent(),
-                            ],
-                          ),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 15),
+                    const HomeAppBarComponent(),
+
+
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height / 3.5,
+                              child:
+                                  const EnvironmentProtectionTipsCarouselComponent(),
+                            ),
+                            SelectItemTitleComponent(
+                              textTitle: "Choose a Model",
+                              hasIcon: false,
+                            ),
+                            const RequestCategorySelectionComponent(),
+                          ],
                         ),
-                      )
-                    ]),
+                      ),
+                    )
+
+                  ],
+                ),
               ),
             ),
           );
@@ -74,9 +77,10 @@ class TechniciansCardComponent extends StatelessWidget {
             width: 60,
             decoration: BoxDecoration(
                 image: const DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                        "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZSUyMHBob3RvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60")),
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                      "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZSUyMHBob3RvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"),
+                ),
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.green),
           ),
@@ -97,7 +101,7 @@ class TechniciansCardComponent extends StatelessWidget {
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            Icon(Icons.location_on, color: Colors.yellow),
+                            const Icon(Icons.location_on, color: Colors.yellow),
                             Text(technicianDetails['location'])
                           ],
                         )
@@ -106,13 +110,14 @@ class TechniciansCardComponent extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const Text("Last active"),
+                        // const Text("Last active"),
                         IconButton(
-                            onPressed: () {
-                              ///add technician Contact here
-                            },
-                            icon: const Icon(FeatherIcons.phoneCall,
-                                color: PRIMARY_COLOR))
+                          onPressed: () {
+                            ///add technician Contact here
+                          },
+                          icon: const Icon(FeatherIcons.phoneCall,
+                              color: PRIMARY_COLOR),
+                        )
                       ],
                     )
                   ],

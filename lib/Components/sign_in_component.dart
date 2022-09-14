@@ -77,9 +77,7 @@ class _SignInFormComponentState extends State<SignInFormComponent> {
 
                   stopLoading();
                 }
-              }
-
-              ),
+              }),
           Row(
             children: const [
               Expanded(

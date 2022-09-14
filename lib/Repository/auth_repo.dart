@@ -39,7 +39,15 @@ class AuthUser {
       },
     ).then(
       (value) {
-        Navigator.pushNamed(context!, "/home-page");
+        Future.delayed(Duration(seconds: 2), () {
+          showToast(msg: "Sign Up in Successful");
+
+          stopLoading();
+
+          Navigator.pushNamed(context!, '/home-page');
+        });
+
+        // Navigator.pushNamed(context!, "/home-page");
       },
     );
   }
@@ -80,7 +88,6 @@ class AuthUser {
         password: password!,
       )
           .then((value) {
-        
         addUser(
           email: email,
           fullName: nameOrCompany,
@@ -96,8 +103,6 @@ class AuthUser {
         // UserProvider userProvider =
         //     Provider.of<UserProvider>(context, listen: false);
         // userProvider.setUserID(value.user!.uid);
-
-        showToast(msg: "Sign in Successful");
       }).timeout(const Duration(seconds: 60), onTimeout: () {});
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -134,12 +139,11 @@ class AuthUser {
         password: password!,
       )
           .then((value) {
-            addTechnician(
-          email: email,
-          fullName: nameOrCompany,
-          contact: contact,
-          location: location
-        );
+        addTechnician(
+            email: email,
+            fullName: nameOrCompany,
+            contact: contact,
+            location: location);
         addUser(
           email: email,
           fullName: nameOrCompany,
@@ -156,7 +160,7 @@ class AuthUser {
         //     Provider.of<UserProvider>(context, listen: false);
         // userProvider.setUserID(value.user!.uid);
 
-        showToast(msg: "Sign in Successful");
+        // showToast(msg: "Sign in Successful");
       }).timeout(const Duration(seconds: 60), onTimeout: () {});
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -186,7 +190,12 @@ class AuthUser {
         //     Provider.of<UserProvider>(context, listen: false);
         // userProvider.setUserID(value.user!.uid);
         await getUser(context);
-        Navigator.pushNamed(context, '/home-page');
+
+        Future.delayed(const Duration(seconds: 2), () {
+          stopLoading();
+
+          Navigator.pushNamed(context, '/home-page');
+        });
       }).timeout(const Duration(seconds: 60), onTimeout: () {
         showToast(
             msg: "Time out, please check your internet connection.",
@@ -312,6 +321,7 @@ class AuthUser {
       "questionFive": questionFive ?? "",
       "questionFiveAnswer": questionFiveAnswer ?? "",
       "questionSixAnswer": questionSixAnswer ?? "",
+      "questionSix": questionSix ?? "",
       "questionSeven": questionSeven ?? "",
       "questionSevenAnswer": questionSevenAnswer ?? "",
       "questionEight": questionEight ?? "",

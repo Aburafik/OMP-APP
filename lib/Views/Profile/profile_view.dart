@@ -1,17 +1,21 @@
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
+import 'package:omp_app/Components/Utils/constants.dart';
 import 'package:omp_app/Components/custom_button.dart';
-import 'package:omp_app/Components/user_profile_component.dart';
-import 'package:omp_app/Providers/routing_provider.dart';
+import 'package:omp_app/Components/profile_tile_card.dart';
+import 'package:omp_app/Providers/user_provider.dart';
 import 'package:omp_app/Repository/auth_repo.dart';
 import 'package:provider/provider.dart';
 
 class ProfileVC extends StatelessWidget {
   ProfileVC({Key? key}) : super(key: key);
-  AuthUser _authUser = AuthUser();
+  final AuthUser _authUser = AuthUser();
 
   @override
   Widget build(BuildContext context) {
+    UserProvider userProvider =
+        Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -27,21 +31,37 @@ class ProfileVC extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const UserProfileComponent(),
-            Text(
-              "My Account",
-              style:
-                  Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 18),
+            const CircleAvatar(
+              radius: 60,
+              backgroundColor: GREY_COLOR_20,
+              child: Icon(
+                FeatherIcons.user,
+                size: 50,
+                color: GREY_COLOR_50,
+              ),
             ),
-            // const MyAccountComponent(),
-
+            ProfieCardTile(
+              title: userProvider.userData['full_name'],
+              icon: FeatherIcons.user,
+            ),
+            ProfieCardTile(
+              title: userProvider.userData['email'],
+              icon: FeatherIcons.mail,
+            ),
+            ProfieCardTile(
+              title: userProvider.userData['location'],
+              icon: FeatherIcons.mapPin,
+            ),
+            ProfieCardTile(
+              title: userProvider.userData['account_type'],
+              icon: Icons.work,
+            ),
             CustomButtonComponent(
-              buttonText: "Update Profile",
-              onPressed: () => Navigator.pop(context),
-            ),
-            // const SupportComponent(),
+                buttonText: "Update Profile",
+                onPressed: () => showToast(
+                    msg: "Profile can't be updated.", color: Colors.red)),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -67,9 +87,9 @@ class ProfileVC extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 moreText(text: "About Us", context: context),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 moreText(text: "Privacy Policy", context: context),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 moreText(text: "Terms Of Use", context: context),
               ],
             )
@@ -79,11 +99,8 @@ class ProfileVC extends StatelessWidget {
     );
   }
 
-  Text moreText({String, text, BuildContext? context}) => Text(
+  Text moreText({String? text, BuildContext? context}) => Text(
         text!,
         style: Theme.of(context!).textTheme.headline2!.copyWith(fontSize: 16),
       );
 }
-
-RoundedRectangleBorder cardDecorator() =>
-    RoundedRectangleBorder(borderRadius: BorderRadius.circular(10));

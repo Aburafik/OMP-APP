@@ -16,6 +16,14 @@ List<Widget> pages = [
   ProfileVC()
 ];
 
+List<Widget> techniciansView = [
+  HomeVC(),
+  MyHistoryVC(),
+  // AvailableTechniciansVC(),
+  // Center(child: Text("Wallet")),
+  ProfileVC()
+];
+
 final List<Map<String, dynamic>> imgList = [
   {
     "title": "Perform a Visual Inspection",

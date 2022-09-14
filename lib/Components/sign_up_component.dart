@@ -88,10 +88,10 @@ class _SignUpFormComponentState extends State<SignUpFormComponent> {
           ),
           CustomTextFormField(
             controller: contactController,
-            hintText: "Contact Address",
+            hintText: "Contact",
             hasPreffix: true,
             prefixIcon: FeatherIcons.phone,
-            errorMessage: "Contact Address can't be empty",
+            errorMessage: "Contact can't be empty",
           ),
           Padding(
             padding: const EdgeInsets.only(top: 30),
@@ -110,7 +110,7 @@ class _SignUpFormComponentState extends State<SignUpFormComponent> {
                       contact: contactController.text,
                       context: context);
 
-                  stopLoading();
+                  // stopLoading();
                 }
               },
             ),
