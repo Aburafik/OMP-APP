@@ -10,7 +10,7 @@ class RequestDetailsVC extends StatelessWidget {
         title: Text(requestDetails['questionTitle']),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(3.0),
+        padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -24,8 +24,6 @@ class HomeVC extends StatelessWidget {
                   children: [
                     const SizedBox(height: 15),
                     const HomeAppBarComponent(),
-
-
                     Expanded(
                       child: SingleChildScrollView(
                         child: Column(
@@ -36,7 +34,7 @@ class HomeVC extends StatelessWidget {
                                   const EnvironmentProtectionTipsCarouselComponent(),
                             ),
                             SelectItemTitleComponent(
-                              textTitle: "Choose a Model",
+                              textTitle: "Select a Model",
                               hasIcon: false,
                             ),
                             const RequestCategorySelectionComponent(),
@@ -44,7 +42,6 @@ class HomeVC extends StatelessWidget {
                         ),
                       ),
                     )
-
                   ],
                 ),
               ),

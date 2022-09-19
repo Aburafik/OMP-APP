@@ -33,7 +33,7 @@ class _RegisterTechnicianVCState extends State<RegisterTechnicianVC> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        iconTheme: IconThemeData(color: GREY_COLOR_75),
+        iconTheme: const IconThemeData(color: GREY_COLOR_75),
       ),
       backgroundColor: const Color(0xffF4F4F4),
       body: Padding(
@@ -44,7 +44,6 @@ class _RegisterTechnicianVCState extends State<RegisterTechnicianVC> {
               title: "Creat account",
               subtitle: "Please enter the following details",
             ),
-
             Form(
               key: _formKey,
               child: Column(
@@ -118,7 +117,6 @@ class _RegisterTechnicianVCState extends State<RegisterTechnicianVC> {
                               location: locationController.text,
                               contact: contactController.text,
                               password: passwordController.text);
-
                         }
                       },
                     ),
@@ -143,7 +141,6 @@ class _RegisterTechnicianVCState extends State<RegisterTechnicianVC> {
                 ],
               ),
             ),
-
             AuthenticationsOptionsComponents(
               wrapperLeftText: "Already have an account?",
               wrapperRightText: "Login",

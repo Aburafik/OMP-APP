@@ -37,7 +37,8 @@ class _MyHistoryVCState extends State<MyHistoryVC> {
         stream: _myHistoryStream,
         builder: (context, snapshots) {
           if (snapshots.hasData) {
-            return ListView.builder(
+            return ListView.separated(
+                separatorBuilder: ((context, index) => SizedBox(height: 10)),
                 itemCount: snapshots.data!.docs.length,
                 itemBuilder: (context, index) {
                   dynamic data = snapshots.data!.docs[index].data();
