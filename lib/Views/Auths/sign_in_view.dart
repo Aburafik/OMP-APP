@@ -16,11 +16,9 @@ class SignInVC extends StatelessWidget {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.all(50.0),
-              child:appLogo(context)
-            ),
+                padding: const EdgeInsets.all(50.0), child: appLogo(context)),
             ScreenDescriptionTextComponent(
-              title: "Welcome",
+              title: "Welcome Back",
               subtitle: "Please login to continue",
             ),
             const SignInFormComponent(),
@@ -28,7 +26,9 @@ class SignInVC extends StatelessWidget {
               wrapperLeftText: "Not a member?",
               wrapperRightText: "Create account",
               rightWrapperTextOnTap: () => Navigator.pushNamed(
-                  context, "/registration-decide",),
+                context,
+                "/registration-decide",
+              ),
             ),
           ],
         ),

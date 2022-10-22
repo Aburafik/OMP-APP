@@ -2,8 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:im_animations/im_animations.dart';
 import 'package:intl/intl.dart';
 import 'package:omp_app/Components/Utils/color_themes.dart';
+import 'package:omp_app/Components/custom_button.dart';
 import 'package:omp_app/Providers/user_provider.dart';
 import 'package:omp_app/Views/History/request_details.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +33,7 @@ class _MyHistoryVCState extends State<MyHistoryVC> {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         automaticallyImplyLeading: false,
         title: Text(userType == "Customer" ? "My History" : "Requests"),
       ),
@@ -38,7 +42,7 @@ class _MyHistoryVCState extends State<MyHistoryVC> {
         builder: (context, snapshots) {
           if (snapshots.hasData) {
             return ListView.separated(
-                separatorBuilder: ((context, index) => SizedBox(height: 10)),
+                separatorBuilder: ((context, index) => const SizedBox(height: 10)),
                 itemCount: snapshots.data!.docs.length,
                 itemBuilder: (context, index) {
                   dynamic data = snapshots.data!.docs[index].data();
@@ -271,14 +275,63 @@ class RequestsCardComponent extends StatelessWidget {
                     ),
                   ),
                   // SizedBox(height: 5),
-                  Material(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)),
-                      color: PRIMARY_COLOR,
-                      child: const Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Text("Call Sender"),
-                      ))
+                  GestureDetector(
+                    child: Material(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        color: PRIMARY_COLOR,
+                        child: const Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Text("Call Sender"),
+                        )),
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Sonar(
+                                  radius: 100,
+                                  // waveThickness: 2,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      const Icon(
+                                        FeatherIcons.mapPin,
+                                      ),
+                                      Text(histories["sender_location"],
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2!
+                                              .copyWith(fontSize: 14)),
+                                    ],
+                                  )),
+                              Text(
+                                "By clicking the button, you agree to provide the service to the customer based on the site location.",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline2!
+                                    .copyWith(fontSize: 14),
+                                textAlign: TextAlign.center,
+                              ),
+                              CustomButtonComponent(
+                                buttonText: "Ok",
+                                onPressed: () {
+                                  Navigator.pop(context);
+
+                                  FlutterPhoneDirectCaller.callNumber(
+                                      histories["contact"]);
+                                },
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  )
                 ],
               )
             ],

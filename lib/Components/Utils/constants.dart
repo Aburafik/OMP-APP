@@ -135,6 +135,11 @@ final List<Widget> imageSliders = imgList
         )))
     .toList();
 
+
+
+
+
+
 var outlineInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(3),
     borderSide: BorderSide(color: GREY_COLOR_50));

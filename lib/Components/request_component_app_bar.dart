@@ -3,6 +3,7 @@ import 'package:omp_app/Components/Utils/color_themes.dart';
 
 AppBar requestComponentAppBar(BuildContext context) {
   return AppBar(
+    centerTitle: true,
     automaticallyImplyLeading: false,
     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     // elevation: 0,
@@ -13,6 +14,5 @@ AppBar requestComponentAppBar(BuildContext context) {
             fontSize: 20,
           ),
     ),
-    
   );
 }

@@ -36,7 +36,8 @@ class HomeAppBarComponent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              userProvider.userData['full_name'] ?? "",
+              "Hi ${userProvider.userData['full_name'] ?? ""}",
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(),
             ),
             IconButton(
               onPressed: () {},
